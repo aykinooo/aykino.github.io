@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — CyberFolio</title>
-  <meta name="description" content="Tous les articles : pentest, OSINT, reverse engineering, CTF writeups, blue team, red team.">
+  <title>aykino's cybersecurity blog</title>
+  <meta name="description" content="All articles: pentest, OSINT, reverse engineering, CTF writeups, blue team, red team.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -14,15 +14,14 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <span class="logo-icon">CF</span>
-        CyberFolio
+        <span class="logo-icon">A</span>
+        aykino's cybersecurity blog
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="blog.html" class="active">Blog</a></li>
-        <li><a href="projects.html">Projets</a></li>
-        <li><a href="about.html">À propos</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
       <div style="display:flex;align-items:center;gap:0.75rem;">
         <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
@@ -31,31 +30,28 @@
     </div>
   </nav>
   <div class="mobile-menu">
-    <a href="index.html">Accueil</a>
+    <a href="index.html">Home</a>
     <a href="blog.html">Blog</a>
-    <a href="projects.html">Projets</a>
-    <a href="about.html">À propos</a>
-    <a href="contact.html">Contact</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
   </div>
 
   <!-- Page Header -->
   <section class="page-header container">
     <span class="section-label">Blog</span>
-    <h1>Tous les articles</h1>
-    <p class="section-subtitle">Writeups, analyses techniques, veille et retours d'expérience en cybersécurité.</p>
+    <h1>All Articles</h1>
   </section>
 
   <!-- Filters & Search -->
   <section class="container">
     <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">Tous</button>
-      <button class="filter-btn" data-filter="pentest">Pentest</button>
-      <button class="filter-btn" data-filter="osint">OSINT</button>
-      <button class="filter-btn" data-filter="reverse">Reverse</button>
+      <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="ctf">CTF</button>
       <button class="filter-btn" data-filter="blueteam">Blue Team</button>
       <button class="filter-btn" data-filter="redteam">Red Team</button>
-      <input type="text" class="search-input" placeholder="Rechercher un article...">
+      <button class="filter-btn" data-filter="homelab">Home Lab</button>
+      <button class="filter-btn" data-filter="network">Network Security</button>
+      <input type="text" class="search-input" placeholder="Search an article...">
     </div>
   </section>
 
@@ -63,148 +59,49 @@
   <section class="container" style="padding-bottom:6rem;">
     <div class="posts-grid stagger">
 
-      <!-- 1 -->
-      <a href="article-pentest.html" class="card" data-tags="pentest">
-        <div class="card-image" style="background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);">
-          <span class="placeholder-icon">🔓</span>
+      <a href="article/article-red-team.html" class="card" data-tags="redteam">
+        <div class="card-image" style="background: linear-gradient(135deg, #400a0a 0%, #a80b0b 52%, #ff2e2e 100%);">
+          <span class="placeholder-icon">⚔️</span>
         </div>
         <div class="card-body">
           <div class="card-meta">
-            <span class="card-tag tag-pentest">Pentest</span>
-            <span>15 Fév 2026</span><span>·</span><span>12 min</span>
+            <span class="card-tag tag-redteam">Red Team</span>
+            <span>Feb 19, 2026</span>
           </div>
-          <h3 class="card-title">Pentest d'une application web : de la reconnaissance à l'exploitation</h3>
-          <p class="card-excerpt">Guide complet pour réaliser un test d'intrusion sur une application web moderne. Énumération, exploitation de vulnérabilités IDOR et XSS, post-exploitation.</p>
+          <h3 class="card-title">Red Team: Introduction to Offensive Security</h3>
+          <p class="card-excerpt">A beginner-friendly overview of Red Teaming, offensive security concepts, and how ethical hackers simulate real-world attacks.</p>
         </div>
-        <div class="card-footer"><span>🏷️ Web, IDOR, XSS</span><span>→</span></div>
+        <div class="card-footer"><span>🏷️ Red Team, OffSec</span><span>→</span></div>
       </a>
 
-      <!-- 2 -->
-      <a href="article-osint.html" class="card" data-tags="osint">
-        <div class="card-image" style="background:linear-gradient(135deg,#0d1b2a,#1b263b,#415a77);">
-          <span class="placeholder-icon">🔍</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-tag tag-osint">OSINT</span>
-            <span>10 Fév 2026</span><span>·</span><span>8 min</span>
-          </div>
-          <h3 class="card-title">OSINT : retrouver une personne à partir d'une photo</h3>
-          <p class="card-excerpt">Techniques de recherche en sources ouvertes pour identifier une localisation et croiser les informations à partir d'une simple image.</p>
-        </div>
-        <div class="card-footer"><span>🏷️ OSINT, Géolocalisation</span><span>→</span></div>
-      </a>
-
-      <!-- 3 -->
-      <a href="article-reverse.html" class="card" data-tags="reverse">
-        <div class="card-image" style="background:linear-gradient(135deg,#2d1b69,#11001c,#4a0e8f);">
-          <span class="placeholder-icon">⚙️</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-tag tag-reverse">Reverse</span>
-            <span>5 Fév 2026</span><span>·</span><span>15 min</span>
-          </div>
-          <h3 class="card-title">Reverse engineering d'un malware : analyse statique et dynamique</h3>
-          <p class="card-excerpt">Décomposition pas à pas d'un sample malveillant avec Ghidra et x64dbg. Identification des techniques d'obfuscation et extraction des IOC.</p>
-        </div>
-        <div class="card-footer"><span>🏷️ Malware, Ghidra</span><span>→</span></div>
-      </a>
-
-      <!-- 4 -->
-      <a href="article-ctf.html" class="card" data-tags="ctf">
-        <div class="card-image" style="background:linear-gradient(135deg,#064e3b,#065f46,#047857);">
-          <span class="placeholder-icon">🚩</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-tag tag-ctf">CTF</span>
-            <span>1 Fév 2026</span><span>·</span><span>10 min</span>
-          </div>
-          <h3 class="card-title">Writeup HTB : Exploitation d'une injection SQL aveugle sur "ShadowVault"</h3>
-          <p class="card-excerpt">Résolution complète du challenge HackTheBox. Enumération, blind SQLi, extraction de la base et privesc via sudo.</p>
-        </div>
-        <div class="card-footer"><span>🏷️ HackTheBox, SQLi</span><span>→</span></div>
-      </a>
-
-      <!-- 5 -->
-      <a href="#" class="card" data-tags="blueteam">
-        <div class="card-image" style="background:linear-gradient(135deg,#0c4a6e,#075985,#0284c7);">
+      <a href="article/article-blue-team.html" class="card" data-tags="blueteam">
+        <div class="card-image" style="background: linear-gradient(135deg, #0a2540 0%, #0b5ea8 52%, #2ea8ff 100%);">
           <span class="placeholder-icon">🛡️</span>
         </div>
         <div class="card-body">
           <div class="card-meta">
             <span class="card-tag tag-blueteam">Blue Team</span>
-            <span>25 Jan 2026</span><span>·</span><span>9 min</span>
+            <span>Feb 10, 2026</span>
           </div>
-          <h3 class="card-title">Détecter les mouvements latéraux avec Wazuh et Sigma rules</h3>
-          <p class="card-excerpt">Mise en place d'un pipeline de détection des mouvements latéraux avec Wazuh SIEM et les règles Sigma.</p>
+          <h3 class="card-title">Blue Team: Introduction to Defensive Security</h3>
+          <p class="card-excerpt">An introduction to Blue Team concepts, defensive security strategies, and how defenders detect, respond to, and prevent cyber attacks.</p>
         </div>
-        <div class="card-footer"><span>🏷️ SIEM, Wazuh</span><span>→</span></div>
+        <div class="card-footer"><span>🏷️ Blue Team, Defense</span><span>→</span></div>
       </a>
 
-      <!-- 6 -->
-      <a href="#" class="card" data-tags="redteam">
-        <div class="card-image" style="background:linear-gradient(135deg,#7c2d12,#9a3412,#c2410c);">
-          <span class="placeholder-icon">💀</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-tag tag-redteam">Red Team</span>
-            <span>18 Jan 2026</span><span>·</span><span>14 min</span>
-          </div>
-          <h3 class="card-title">Red Team : contourner un EDR avec un loader custom en Rust</h3>
-          <p class="card-excerpt">Création d'un shellcode loader en Rust utilisant des syscalls directs pour bypasser les hooks userland d'un EDR moderne.</p>
-        </div>
-        <div class="card-footer"><span>🏷️ EDR, Rust</span><span>→</span></div>
-      </a>
-
-      <!-- 7 -->
-      <a href="#" class="card" data-tags="pentest">
-        <div class="card-image" style="background:linear-gradient(135deg,#1e1b4b,#312e81,#4338ca);">
-          <span class="placeholder-icon">🔑</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-tag tag-pentest">Pentest</span>
-            <span>10 Jan 2026</span><span>·</span><span>11 min</span>
-          </div>
-          <h3 class="card-title">Exploitation d'une API REST : de l'IDOR au takeover complet</h3>
-          <p class="card-excerpt">Comment une simple faille IDOR dans une API REST mal configurée a permis de compromettre le serveur.</p>
-        </div>
-        <div class="card-footer"><span>🏷️ API, IDOR</span><span>→</span></div>
-      </a>
-
-      <!-- 8 -->
-      <a href="#" class="card" data-tags="osint">
-        <div class="card-image" style="background:linear-gradient(135deg,#1a1a2e,#2d3748,#4a5568);">
-          <span class="placeholder-icon">🌐</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-tag tag-osint">OSINT</span>
-            <span>3 Jan 2026</span><span>·</span><span>7 min</span>
-          </div>
-          <h3 class="card-title">Cartographier l'infrastructure d'une entreprise avec des outils OSINT</h3>
-          <p class="card-excerpt">Utilisation de Shodan, Censys, crt.sh et theHarvester pour dresser la surface d'attaque externe d'une organisation.</p>
-        </div>
-        <div class="card-footer"><span>🏷️ Shodan, Recon</span><span>→</span></div>
-      </a>
-
-      <!-- 9 -->
-      <a href="#" class="card" data-tags="ctf">
-        <div class="card-image" style="background:linear-gradient(135deg,#14532d,#166534,#22c55e);">
-          <span class="placeholder-icon">🏆</span>
+      <a href="article/article-ctf.html" class="card" data-tags="ctf">
+        <div class="card-image" style="background: linear-gradient(135deg, #143300 0%, #4e8e00 52%, #8fd700 100%);">
+          <span class="placeholder-icon">🚩</span>
         </div>
         <div class="card-body">
           <div class="card-meta">
             <span class="card-tag tag-ctf">CTF</span>
-            <span>28 Déc 2025</span><span>·</span><span>13 min</span>
+            <span>Feb 1, 2026</span>
           </div>
-          <h3 class="card-title">Writeup TryHackMe : Buffer Overflow sur "Brainpan"</h3>
-          <p class="card-excerpt">Exploitation d'un buffer overflow classique, développement d'un exploit avec Python, et obtention d'un reverse shell.</p>
+          <h3 class="card-title">HTB Writeup: What Is Hack The Box & CTFs?</h3>
+          <p class="card-excerpt">In this HTB writeup, I explain what Hack The Box is, how CTFs work, and how beginners can get started in cybersecurity challenges.</p>
         </div>
-        <div class="card-footer"><span>🏷️ BOF, TryHackMe</span><span>→</span></div>
+        <div class="card-footer"><span>🏷️ HackTheBox</span><span>→</span></div>
       </a>
 
     </div>
@@ -213,7 +110,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
-      <span class="footer-text">© 2026 CyberFolio. Construit avec passion et café ☕</span>
+      <span class="footer-text">© 2026 CyberFolio. Built with passion and coffee ☕</span>
       <div class="footer-links">
         <a href="https://github.com/username" target="_blank" rel="noopener">GitHub</a>
         <a href="https://twitter.com/username" target="_blank" rel="noopener">Twitter</a>

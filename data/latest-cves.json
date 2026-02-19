@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-02-19T00:00:00Z",
+  "source": "https://cve.circl.lu/api/last",
+  "items": [
+    {
+      "id": "CVE-YYYY-NNNN",
+      "summary": "This placeholder entry is replaced automatically by GitHub Actions.",
+      "published": "2026-02-19T00:00:00Z",
+      "cvss": null,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-YYYY-NNNN"
+    }
+  ]
+}

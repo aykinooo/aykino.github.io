@@ -457,6 +457,120 @@ pre code {
   transform: scale(1.02);
 }
 
+/* ---------- CVE Feed ---------- */
+.cve-section {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.cve-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.cve-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur) var(--glass-saturate);
+  -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  color: inherit;
+}
+
+.cve-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.cve-card-top,
+.cve-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.cve-id {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+}
+
+.cve-severity {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 6px;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid transparent;
+}
+
+.cve-severity-critical {
+  color: #ff453a;
+  background: rgba(255, 69, 58, 0.14);
+  border-color: rgba(255, 69, 58, 0.35);
+}
+
+.cve-severity-high {
+  color: #ff9f0a;
+  background: rgba(255, 159, 10, 0.14);
+  border-color: rgba(255, 159, 10, 0.35);
+}
+
+.cve-severity-medium {
+  color: #ffd60a;
+  background: rgba(255, 214, 10, 0.14);
+  border-color: rgba(255, 214, 10, 0.35);
+}
+
+.cve-severity-low {
+  color: #8fd700;
+  background: rgba(143, 215, 0, 0.14);
+  border-color: rgba(143, 215, 0, 0.35);
+}
+
+.cve-severity-na {
+  color: var(--text-secondary);
+  background: rgba(142, 142, 147, 0.12);
+  border-color: rgba(142, 142, 147, 0.25);
+}
+
+.cve-summary {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cve-date {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+}
+
+.cve-link {
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.cve-loading,
+.cve-empty {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  padding: 0.4rem 0;
+}
+
 /* ---------- Cards ---------- */
 .card {
   background: var(--bg-card);
@@ -518,9 +632,9 @@ pre code {
 .tag-pentest { background: rgba(255, 59, 48, 0.1); color: var(--tag-red); }
 .tag-osint { background: rgba(0, 122, 255, 0.1); color: var(--tag-blue); }
 .tag-reverse { background: rgba(175, 82, 222, 0.1); color: var(--tag-purple); }
-.tag-ctf { background: rgba(52, 199, 89, 0.1); color: var(--tag-green); }
+.tag-ctf { background: rgba(143, 215, 0, 0.14); color: #8fd700; }
 .tag-blueteam { background: rgba(90, 200, 250, 0.1); color: var(--tag-teal); }
-.tag-redteam { background: rgba(255, 149, 0, 0.1); color: var(--tag-orange); }
+.tag-redteam { background: rgba(255, 0, 0, 0.1); color: var(--tag-red); }
 
 .card-title {
   font-size: 1.15rem;

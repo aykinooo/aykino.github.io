@@ -1,123 +1,44 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projets — CyberFolio</title>
-  <meta name="description" content="Mes projets open source en cybersécurité : outils de pentest, scanners, et automatisation.">
+  <title>Projects — Coming Soon</title>
+  <meta name="description" content="Projects page coming soon.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><span class="logo-icon">CF</span>CyberFolio</a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="blog.html">Blog</a></li><li><a href="projects.html" class="active">Projets</a></li><li><a href="about.html">À propos</a></li><li><a href="contact.html">Contact</a></li></ul><div style="display:flex;align-items:center;gap:0.75rem;"><button class="theme-toggle" aria-label="Toggle theme">🌙</button><button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button></div></div></nav>
-  <div class="mobile-menu"><a href="index.html">Accueil</a><a href="blog.html">Blog</a><a href="projects.html">Projets</a><a href="about.html">À propos</a><a href="contact.html">Contact</a></div>
-
-  <section class="page-header container">
-    <span class="section-label">Projets</span>
-    <h1>Mes projets</h1>
-    <p class="section-subtitle">Outils, scripts et projets open source en cybersécurité.</p>
-  </section>
-
-  <section class="container" style="padding-bottom:6rem;">
-    <div class="projects-grid stagger">
-
-      <!-- Project 1 -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🕷️</div>
-          <div class="project-links">
-            <a href="#" title="GitHub">⟨/⟩</a>
-            <a href="#" title="Demo">↗</a>
-          </div>
-        </div>
-        <h3>ReconSpider</h3>
-        <p>Outil automatisé de reconnaissance passive. Agrège les résultats de Subfinder, Amass, theHarvester et crt.sh en un seul rapport HTML interactif.</p>
-        <div class="project-tech">
-          <span>Python</span><span>asyncio</span><span>Jinja2</span><span>CLI</span>
-        </div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">A</span>
+        aykino's cybersecurity blog
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
-
-      <!-- Project 2 -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🔐</div>
-          <div class="project-links">
-            <a href="#" title="GitHub">⟨/⟩</a>
-          </div>
-        </div>
-        <h3>VulnAPI</h3>
-        <p>Scanner de vulnérabilités API REST. Détecte automatiquement les IDOR, broken auth, rate limiting absent, et les erreurs de configuration CORS.</p>
-        <div class="project-tech">
-          <span>Go</span><span>REST</span><span>OpenAPI</span><span>Docker</span>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">📊</div>
-          <div class="project-links">
-            <a href="#" title="GitHub">⟨/⟩</a>
-            <a href="#" title="Demo">↗</a>
-          </div>
-        </div>
-        <h3>ThreatDash</h3>
-        <p>Dashboard de threat intelligence en temps réel. Agrège les feeds de OTX, AbuseIPDB, et VirusTotal. Visualisation des IOC sur une carte mondiale.</p>
-        <div class="project-tech">
-          <span>React</span><span>D3.js</span><span>Node.js</span><span>Redis</span>
-        </div>
-      </div>
-
-      <!-- Project 4 -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🔑</div>
-          <div class="project-links">
-            <a href="#" title="GitHub">⟨/⟩</a>
-          </div>
-        </div>
-        <h3>PassCrackBench</h3>
-        <p>Benchmark et comparatif des algorithmes de hachage de mots de passe. Compare la résistance de MD5, SHA, bcrypt, scrypt et Argon2 face à différentes attaques.</p>
-        <div class="project-tech">
-          <span>Python</span><span>Hashcat</span><span>Benchmarks</span>
-        </div>
-      </div>
-
-      <!-- Project 5 -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🛡️</div>
-          <div class="project-links">
-            <a href="#" title="GitHub">⟨/⟩</a>
-          </div>
-        </div>
-        <h3>SigmaForge</h3>
-        <p>Générateur de règles Sigma à partir de logs bruts. Upload un log suspect, l'outil génère automatiquement une règle de détection Sigma optimisée.</p>
-        <div class="project-tech">
-          <span>Python</span><span>Sigma</span><span>YAML</span><span>Flask</span>
-        </div>
-      </div>
-
-      <!-- Project 6 -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🧅</div>
-          <div class="project-links">
-            <a href="#" title="GitHub">⟨/⟩</a>
-          </div>
-        </div>
-        <h3>DarkMonitor</h3>
-        <p>Outil de surveillance du dark web. Monitore les forums et marketplaces pour détecter les fuites de données liées à un domaine spécifique.</p>
-        <div class="project-tech">
-          <span>Python</span><span>Tor</span><span>Scrapy</span><span>PostgreSQL</span>
-        </div>
-      </div>
-
     </div>
-  </section>
+  </nav>
 
-  <footer class="footer"><div class="container footer-inner"><span class="footer-text">© 2026 CyberFolio. Construit avec passion et café ☕</span><div class="footer-links"><a href="https://github.com/username" target="_blank" rel="noopener">GitHub</a><a href="https://twitter.com/username" target="_blank" rel="noopener">Twitter</a><a href="https://linkedin.com/in/username" target="_blank" rel="noopener">LinkedIn</a></div></div></footer>
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <main class="container" style="min-height: calc(100vh - 64px); display:flex; align-items:center; justify-content:center; text-align:center; padding-top: var(--nav-height);">
+    <h1 style="font-size: clamp(2.8rem, 9vw, 6rem);">Coming soon...</h1>
+  </main>
+
   <script src="js/main.js"></script>
 </body>
 </html>
