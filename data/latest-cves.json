@@ -1,48 +1,48 @@
 {
-  "generated_at": "2026-02-19T21:48:46+00:00",
+  "generated_at": "2026-02-19T22:50:09+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
     {
-      "id": "CVE-2026-2738",
-      "summary": "Buffer overflow in ovpn\u2011dco\u2011win\u202fversion 2.8.0 allows local attackers to cause a system crash by sending too large packets to the remote peer when the AEAD tag appears at the end of the encrypted packet",
-      "published": "2026-02-19T21:18:33.773",
+      "id": "CVE-2026-26744",
+      "summary": "A user enumeration vulnerability exists in FormaLMS 4.1.18 and below in the password recovery functionality accessible via the /lostpwd endpoint. The application returns different error messages for valid and invalid usernames allowing an unauthenticated attacker to determine which usernames are registered in the system through observable response discrepancy.",
+      "published": "2026-02-19T22:16:47.627",
       "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2738"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26744"
     },
     {
-      "id": "CVE-2026-27476",
-      "summary": "RustFly 2.0.0 contains a command injection vulnerability in its remote UI control mechanism that accepts hex-encoded instructions over UDP port 5005 without proper sanitization. Attackers can send crafted hex-encoded payloads containing system commands to execute arbitrary operations on the target system, including reverse shell establishment and command execution.",
-      "published": "2026-02-19T21:18:33.503",
-      "cvss": 9.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27476"
+      "id": "CVE-2026-26317",
+      "summary": "OpenClaw is a personal AI assistant. Prior to 2026.2.14, browser-facing localhost mutation routes accepted cross-origin browser requests without explicit Origin/Referer validation. Loopback binding reduces remote exposure but does not prevent browser-initiated requests from malicious origins. A malicious website can trigger unauthorized state changes against a victim's local OpenClaw browser control plane (for example opening tabs, starting/stopping the browser, mutating storage/cookies) if the browser control service is reachable on loopback in the victim's browser context. Starting in version 2026.2.14, mutating HTTP methods (POST/PUT/PATCH/DELETE) are rejected when the request indicates a non-loopback Origin/Referer (or `Sec-Fetch-Site: cross-site`). Other mitigations include enabling browser control auth (token/password) and avoid running with auth disabled.",
+      "published": "2026-02-19T22:16:47.270",
+      "cvss": 7.1,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26317"
     },
     {
-      "id": "CVE-2026-27440",
-      "summary": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Saad Iqbal myCred mycred allows Stored XSS.This issue affects myCred: from n/a through <= 2.9.7.6.",
-      "published": "2026-02-19T21:18:33.367",
-      "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27440"
+      "id": "CVE-2026-26316",
+      "summary": "OpenClaw is a personal AI assistant. Prior to 2026.2.13, the optional BlueBubbles iMessage channel plugin could accept webhook requests as authenticated based only on the TCP peer address being loopback (`127.0.0.1`, `::1`, `::ffff:127.0.0.1`) even when the configured webhook secret was missing or incorrect. This does not affect the default iMessage integration unless BlueBubbles is installed and enabled. Version 2026.2.13 contains a patch. Other mitigations include setting a non-empty BlueBubbles webhook password and avoiding deployments where a public-facing reverse proxy forwards to a loopback-bound Gateway without strong upstream authentication.",
+      "published": "2026-02-19T22:16:47.110",
+      "cvss": 7.5,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26316"
     },
     {
-      "id": "CVE-2026-27387",
-      "summary": "Missing Authorization vulnerability in designinvento DirectoryPress directorypress allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects DirectoryPress: from n/a through <= 3.6.26.",
-      "published": "2026-02-19T21:18:33.227",
+      "id": "CVE-2026-26315",
+      "summary": "go-ethereum (Geth) is a golang execution layer implementation of the Ethereum protocol. Prior to version 1.16.9, through a flaw in the ECIES cryptography implementation, an attacker may be able to extract bits of the p2p node key. The issue is resolved in the v1.16.9 and v1.17.0 releases of Geth. Geth maintainers recommend rotating the node key after applying the upgrade, which can be done by removing the file `<datadir>/geth/nodekey` before starting Geth.",
+      "published": "2026-02-19T22:16:46.967",
       "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27387"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26315"
     },
     {
-      "id": "CVE-2026-27368",
-      "summary": "Missing Authorization vulnerability in SeedProd Coming Soon Page, Under Construction & Maintenance Mode by SeedProd coming-soon allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Coming Soon Page, Under Construction & Maintenance Mode by SeedProd: from n/a through <= 6.19.7.",
-      "published": "2026-02-19T21:18:33.083",
+      "id": "CVE-2026-26314",
+      "summary": "go-ethereum (geth) is a golang execution layer implementation of the Ethereum protocol. Prior to version 1.16.9, a vulnerable node can be forced to shutdown/crash using a specially crafted message. The problem is resolved in the v1.16.9 and v1.17.0 releases of Geth.",
+      "published": "2026-02-19T22:16:46.813",
       "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27368"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26314"
     },
     {
-      "id": "CVE-2026-27360",
-      "summary": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in 10Web Photo Gallery by 10Web photo-gallery allows Stored XSS.This issue affects Photo Gallery by 10Web: from n/a through <= 1.8.37.",
-      "published": "2026-02-19T21:18:32.950",
-      "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27360"
+      "id": "CVE-2026-26275",
+      "summary": "httpsig-hyper is a hyper extension for http message signatures. An issue was discovered in `httpsig-hyper` prior to version 0.0.23 where Digest header verification could incorrectly succeed due to misuse of Rust's `matches!` macro. Specifically, the comparison `if matches!(digest, _expected_digest)` treated `_expected_digest` as a pattern binding rather than a value comparison, resulting in unconditional success of the match expression. As a consequence, digest verification could incorrectly return success even when the computed digest did not match the expected value. Applications relying on Digest verification as part of HTTP message signature validation may therefore fail to detect message body modification. The severity depends on how the library is integrated and whether additional signature validation layers are enforced. This issue has been fixed in `httpsig-hyper` 0.0.23. The fix replaces the incorrect `matches!` usage with proper value comparison and additionally introduces constant-time comparison for digest verification as defense-in-depth. Regression tests have also been added to prevent reintroduction of this issue. Users are strongly advised to upgrade to the patched version. There is no reliable workaround without upgrading. Users who cannot immediately upgrade should avoid relying solely on Digest verification for message integrity and ensure that full HTTP message signature verification is enforced at the application layer.",
+      "published": "2026-02-19T22:16:46.493",
+      "cvss": 7.5,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26275"
     }
   ]
 }
