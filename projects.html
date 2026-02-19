@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects — Coming Soon</title>
-  <meta name="description" content="Projects page coming soon.">
+  <title>Projects — aykino's cybersecurity blog</title>
+  <meta name="description" content="Lab projects: network infrastructure, pentesting setups, home lab builds, and security tooling.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- ==================== NAVIGATION ==================== -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
@@ -35,9 +37,54 @@
     <a href="about.html">About</a>
   </div>
 
-  <main class="container" style="min-height: calc(100vh - 64px); display:flex; align-items:center; justify-content:center; text-align:center; padding-top: var(--nav-height);">
-    <h1 style="font-size: clamp(2.8rem, 9vw, 6rem);">Coming soon...</h1>
-  </main>
+  <!-- ==================== PAGE HEADER ==================== -->
+  <section class="page-header container">
+    <span class="section-label">Projects</span>
+    <h1>My Projects</h1>
+    <p style="max-width:540px;margin-top:0.75rem;">Hands-on lab builds, infrastructure designs, and security tooling. Each project documents real implementation work with configurations, diagrams, and lessons learned.</p>
+  </section>
+
+  <!-- ==================== PROJECTS GRID ==================== -->
+  <section class="container" style="padding-bottom:6rem;">
+    <div class="projects-grid stagger">
+
+      <!-- Project 1: Enterprise Network -->
+      <a href="projects/enterprise-network.html" class="project-card" style="text-decoration:none;display:block;cursor:pointer;">
+        <div class="project-header">
+          <div class="project-icon">🏢</div>
+          <div class="project-links" style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+            <span class="card-tag" style="background:rgba(90,200,250,0.1);color:#5ac8fa;">Network</span>
+            <span class="card-tag" style="background:rgba(175,82,222,0.1);color:#af52de;">Infrastructure</span>
+            <span class="card-tag" style="background:rgba(255,149,0,0.12);color:#ff9500;">Home Lab</span>
+          </div>
+        </div>
+        <h3>SMB Enterprise Network Infrastructure</h3>
+        <p>Design and deployment of a complete on-premise network for a 15-person company: Active Directory, Apache servers (intranet + DMZ), VLAN segmentation with pfSense, file sharing, and centralised backup.</p>
+        <div class="project-tech" style="margin-top:1rem;">
+          <span>Windows Server 2022</span>
+          <span>Active Directory</span>
+          <span>Apache 2.4</span>
+          <span>pfSense</span>
+          <span>Ubuntu 22.04</span>
+          <span>GPO</span>
+          <span>ModSecurity</span>
+          <span>Restic</span>
+        </div>
+        <div style="margin-top:1.25rem;font-size:0.85rem;color:var(--accent);">View project →</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-text">© 2026 aykino's cybersecurity blog. Built with passion and coffee ☕</span>
+      <div class="footer-links">
+        <a href="https://github.com/aykinooo" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
 
   <script src="js/main.js"></script>
 </body>

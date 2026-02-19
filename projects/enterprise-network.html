@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMB Enterprise Network Infrastructure — aykino</title>
+  <meta name="description" content="Design and deployment of a complete enterprise network for 15 users: Active Directory, Apache servers, VLAN segmentation, pfSense firewall, and security hardening.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ── Project-specific extras ── */
+    .tag-network   { background: rgba(90,200,250,0.1); color: #5ac8fa; }
+    .tag-infra     { background: rgba(175,82,222,0.1); color: #af52de; }
+    .tag-homelab   { background: rgba(255,149,0,0.12); color: #ff9500; }
+
+    /* Network diagram */
+    .net-diagram {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Tables */
+    .infra-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    .infra-table th {
+      background: var(--accent-subtle);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.65rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-strong);
+    }
+    .infra-table td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+    .infra-table tr:last-child td { border-bottom: none; }
+    .infra-table tr:hover td { background: var(--accent-subtle); }
+    .infra-table code { font-size: 0.82rem; }
+
+    /* VLAN badge colours */
+    .vlan-10 { color: #ff9500; background: rgba(255,149,0,0.12); padding: 0.15em 0.5em; border-radius: 5px; font-family: var(--font-mono); font-size: 0.78rem; }
+    .vlan-20 { color: #2997ff; background: rgba(41,151,255,0.12); padding: 0.15em 0.5em; border-radius: 5px; font-family: var(--font-mono); font-size: 0.78rem; }
+    .vlan-30 { color: #34c759; background: rgba(52,199,89,0.12);  padding: 0.15em 0.5em; border-radius: 5px; font-family: var(--font-mono); font-size: 0.78rem; }
+    .vlan-40 { color: #ff453a; background: rgba(255,69,58,0.12);  padding: 0.15em 0.5em; border-radius: 5px; font-family: var(--font-mono); font-size: 0.78rem; }
+    .vlan-50 { color: #af52de; background: rgba(175,82,222,0.12); padding: 0.15em 0.5em; border-radius: 5px; font-family: var(--font-mono); font-size: 0.78rem; }
+
+    /* Server cards (override skill-card for wider content) */
+    .server-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .server-card {
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      transition: all var(--transition-fast);
+    }
+    .server-card:hover {
+      border-color: var(--accent);
+      background: var(--accent-subtle);
+    }
+    .server-card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .server-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-subtle);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .server-card h4 { font-size: 0.95rem; margin-bottom: 0.1rem; }
+    .server-card .server-ip { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
+    .server-card p { font-size: 0.82rem; color: var(--text-tertiary); line-height: 1.55; max-width: 100%; }
+    .server-role-list { list-style: none; padding: 0; margin-top: 0.5rem; }
+    .server-role-list li {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      padding: 0.2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .server-role-list li::before { content: "›"; color: var(--accent); font-weight: 700; }
+
+    /* OU tree */
+    .ou-tree {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 2;
+      color: var(--text-secondary);
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+    .ou-tree .ou-domain  { color: var(--accent); font-weight: 600; }
+    .ou-tree .ou-name    { color: #34c759; }
+    .ou-tree .ou-comment { color: var(--text-tertiary); }
+
+    /* Wide article sections (break out of 720px max-width) */
+    .wide-section {
+      max-width: 960px;
+      margin: 3rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .wide-section h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin-bottom: 0.5rem;
+    }
+    .wide-section .section-label { display: block; margin-bottom: 0.5rem; }
+
+    /* Security rule item */
+    .rule-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .rule-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .rule-list li:last-child { border-bottom: none; }
+    .rule-icon {
+      width: 26px;
+      height: 26px;
+      background: var(--accent-subtle);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">A</span>
+        aykino's cybersecurity blog
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="../index.html">Home</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../projects.html">Projects</a>
+    <a href="../about.html">About</a>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="article-hero container">
+    <div style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;">
+      <span class="card-tag tag-network">Network</span>
+      <span class="card-tag tag-infra">Infrastructure</span>
+      <span class="card-tag tag-homelab">Home Lab</span>
+    </div>
+    <h1>SMB Enterprise Network Infrastructure</h1>
+    <div class="article-meta">
+      <span>Feb 2026</span>
+      <span>·</span>
+      <span>15 users</span>
+      <span>·</span>
+      <span>Windows Server 2022 · Ubuntu · pfSense</span>
+    </div>
+  </section>
+
+  <!-- ==================== STATS ==================== -->
+  <div class="container reveal" style="padding-bottom:1rem;">
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-number">15</div>
+        <div class="stat-label">Users</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5</div>
+        <div class="stat-label">VLANs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Servers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">AD Domain</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ARTICLE CONTENT ==================== -->
+  <article class="article-content">
+
+    <!-- Table of contents -->
+    <div class="toc">
+      <h4>Table of Contents</h4>
+      <ul>
+        <li><a href="#overview">1. Project Overview</a></li>
+        <li><a href="#topology">2. Network Topology</a></li>
+        <li><a href="#vlans">3. VLAN Architecture</a></li>
+        <li><a href="#servers">4. Server Infrastructure</a></li>
+        <li><a href="#ad">5. Active Directory</a></li>
+        <li><a href="#users">6. User Roles &amp; OUs</a></li>
+        <li><a href="#apache">7. Apache Configuration</a></li>
+        <li><a href="#gpo">8. Group Policy Objects</a></li>
+        <li><a href="#security">9. Security Policies</a></li>
+        <li><a href="#takeaways">10. Key Takeaways</a></li>
+      </ul>
+    </div>
+
+    <!-- 1. Overview -->
+    <h2 id="overview">1. Project Overview</h2>
+    <p>This project simulates the design and deployment of a complete on-premise network infrastructure for a small to medium-sized business with approximately 15 employees spread across different departments. The goal is to build a realistic, secure, and manageable environment using industry-standard technologies.</p>
+    <p>The infrastructure covers identity and access management through Active Directory, internal and public-facing web services via Apache, network segmentation using VLANs, perimeter security with pfSense, and a centralised file and backup server — all running on a single managed switch and behind a stateful firewall.</p>
+
+    <blockquote>
+      All IP ranges, hostnames, and credentials used in this project are fictional and designed for a lab environment. No real-world systems are targeted or exposed.
+    </blockquote>
+
+    <!-- 2. Network Topology -->
+    <h2 id="topology">2. Network Topology</h2>
+    <p>The network uses a three-tier architecture: perimeter (firewall), distribution (managed switch with VLANs), and access (workstations and servers). The DMZ is fully isolated from the internal LAN.</p>
+
+    <pre class="net-diagram">
+                          ┌─────────────┐
+                          │   INTERNET  │
+                          └──────┬──────┘
+                                 │  WAN (DHCP from ISP)
+                    ┌────────────▼────────────┐
+                    │    pfSense 2.7 CE        │
+                    │  LAN trunk: 192.168.0.1  │
+                    │  Firewall + NAT + IDS    │
+                    └────────────┬────────────┘
+                                 │  802.1Q trunk
+                    ┌────────────▼────────────┐
+                    │   L2 Managed Switch      │
+                    │   (24-port, VLAN aware)  │
+                    └──┬────┬────┬────┬───────┘
+                       │    │    │    │
+              ┌────────┘    │    │    └──────────┐
+              │             │    │               │
+         ┌────▼───┐   ┌─────▼──┐ ┌──▼──────┐ ┌─▼──────┐
+         │VLAN 10 │   │VLAN 20 │ │VLAN 30  │ │VLAN 40 │
+         │ Mgmt   │   │Servers │ │ Users   │ │  DMZ   │
+         │.10.0/24│   │.20.0/24│ │.30.0/24 │ │.40.0/24│
+         └────┬───┘   └────┬───┘ └──┬──────┘ └─┬──────┘
+              │            │        │            │
+         IT Admins    ┌────▼──────────────┐  ┌──▼────────────┐
+         Net Admins   │ DC-01  .20.10     │  │ APACHE-DMZ    │
+                      │ APACHE-INT .20.20 │  │ .40.10        │
+                      │ FILE-01    .20.30 │  │ (public site) │
+                      │ BACKUP-01  .20.40 │  └───────────────┘
+                      └───────────────────┘
+                                              ┌──────────────┐
+                                              │   VLAN 50    │
+                                              │ Guest WiFi   │
+                                              │ .50.0/24     │
+                                              │ DHCP only    │
+                                              └──────────────┘</pre>
+
+    <!-- 3. VLANs -->
+    <h2 id="vlans">3. VLAN Architecture</h2>
+    <p>VLAN segmentation is enforced at the switch level and filtered by pfSense inter-VLAN firewall rules. Each department is isolated: a compromised workstation in the Users VLAN cannot reach the Servers VLAN directly.</p>
+
+  </article>
+
+  <!-- Wide section: VLAN table -->
+  <div class="wide-section reveal">
+    <table class="infra-table">
+      <thead>
+        <tr>
+          <th>VLAN ID</th>
+          <th>Name</th>
+          <th>Subnet</th>
+          <th>Gateway</th>
+          <th>Scope</th>
+          <th>Access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="vlan-10">VLAN 10</span></td>
+          <td>Management</td>
+          <td><code>192.168.10.0/24</code></td>
+          <td><code>192.168.10.1</code></td>
+          <td>IT Admins, Network Admins</td>
+          <td>Full — all VLANs</td>
+        </tr>
+        <tr>
+          <td><span class="vlan-20">VLAN 20</span></td>
+          <td>Servers</td>
+          <td><code>192.168.20.0/24</code></td>
+          <td><code>192.168.20.1</code></td>
+          <td>DC, Apache-INT, File, Backup</td>
+          <td>Mgmt + Users (filtered)</td>
+        </tr>
+        <tr>
+          <td><span class="vlan-30">VLAN 30</span></td>
+          <td>Users</td>
+          <td><code>192.168.30.0/24</code></td>
+          <td><code>192.168.30.1</code></td>
+          <td>All employee workstations</td>
+          <td>Servers (443, 445, 636) + Internet</td>
+        </tr>
+        <tr>
+          <td><span class="vlan-40">VLAN 40</span></td>
+          <td>DMZ</td>
+          <td><code>192.168.40.0/24</code></td>
+          <td><code>192.168.40.1</code></td>
+          <td>Public Apache, reverse proxy</td>
+          <td>Internet only — no LAN</td>
+        </tr>
+        <tr>
+          <td><span class="vlan-50">VLAN 50</span></td>
+          <td>Guest</td>
+          <td><code>192.168.50.0/24</code></td>
+          <td><code>192.168.50.1</code></td>
+          <td>Visitor WiFi</td>
+          <td>Internet only — fully isolated</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <article class="article-content" style="margin-top:0;">
+
+    <!-- 4. Server Infrastructure -->
+    <h2 id="servers">4. Server Infrastructure</h2>
+    <p>Five servers handle identity, web services, file sharing, and backup. Each runs on a dedicated VM with a static IP, a specific OS hardened for its role, and access restricted by firewall rules to the Servers VLAN.</p>
+
+  </article>
+
+  <!-- Wide: server cards -->
+  <div class="wide-section">
+    <div class="server-grid stagger">
+
+      <div class="server-card">
+        <div class="server-card-top">
+          <div class="server-icon">🏛️</div>
+          <div>
+            <h4>DC-01</h4>
+            <span class="server-ip">192.168.20.10</span>
+          </div>
+        </div>
+        <p>Windows Server 2022 — Primary Domain Controller for <code>corp.local</code>.</p>
+        <ul class="server-role-list">
+          <li>Active Directory Domain Services (AD DS)</li>
+          <li>DNS Server (authoritative for corp.local)</li>
+          <li>DHCP Server (all VLANs via DHCP relay)</li>
+          <li>Group Policy management (GPO)</li>
+          <li>Kerberos KDC &amp; LDAP</li>
+        </ul>
+      </div>
+
+      <div class="server-card">
+        <div class="server-card-top">
+          <div class="server-icon">🌐</div>
+          <div>
+            <h4>APACHE-INT-01</h4>
+            <span class="server-ip">192.168.20.20</span>
+          </div>
+        </div>
+        <p>Ubuntu Server 22.04 LTS — Internal intranet and documentation wiki, accessible from VLAN 30 only.</p>
+        <ul class="server-role-list">
+          <li>Apache 2.4 with mod_ssl</li>
+          <li>Virtual host: <code>intranet.corp.local</code></li>
+          <li>Virtual host: <code>wiki.corp.local</code></li>
+          <li>Self-signed CA certificate (internal PKI)</li>
+          <li>LDAP authentication via mod_authnz_ldap</li>
+        </ul>
+      </div>
+
+      <div class="server-card">
+        <div class="server-card-top">
+          <div class="server-icon">🌍</div>
+          <div>
+            <h4>APACHE-DMZ-01</h4>
+            <span class="server-ip">192.168.40.10</span>
+          </div>
+        </div>
+        <p>Ubuntu Server 22.04 LTS — Public-facing company website in the DMZ, reachable from the Internet via NAT port forwarding.</p>
+        <ul class="server-role-list">
+          <li>Apache 2.4 + Let's Encrypt TLS</li>
+          <li>HTTP → HTTPS redirect enforced</li>
+          <li>ModSecurity WAF (OWASP CRS)</li>
+          <li>No access to internal LAN (firewall block)</li>
+          <li>Fail2Ban — brute-force protection</li>
+        </ul>
+      </div>
+
+      <div class="server-card">
+        <div class="server-card-top">
+          <div class="server-icon">📁</div>
+          <div>
+            <h4>FILE-01</h4>
+            <span class="server-ip">192.168.20.30</span>
+          </div>
+        </div>
+        <p>Windows Server 2022 — Centralised file server with department-specific SMB shares mapped automatically via GPO.</p>
+        <ul class="server-role-list">
+          <li>SMB3 with encryption enforced</li>
+          <li>NTFS permissions per AD group</li>
+          <li>DFS namespace: <code>\\corp.local\shares</code></li>
+          <li>Shares: HR, Finance, Dev, Sales, IT, Common</li>
+          <li>Auditing — all file access logged</li>
+        </ul>
+      </div>
+
+      <div class="server-card">
+        <div class="server-card-top">
+          <div class="server-icon">💾</div>
+          <div>
+            <h4>BACKUP-01</h4>
+            <span class="server-ip">192.168.20.40</span>
+          </div>
+        </div>
+        <p>Ubuntu Server 22.04 LTS — Centralised backup for all servers using Restic with off-site replication.</p>
+        <ul class="server-role-list">
+          <li>Restic + B2/S3 remote backend</li>
+          <li>Daily incremental, weekly full</li>
+          <li>Retention: 30 days local, 90 days remote</li>
+          <li>Encrypted at rest (AES-256)</li>
+          <li>Restore test every Friday (automated)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <article class="article-content" style="margin-top:2rem;">
+
+    <!-- 5. Active Directory -->
+    <h2 id="ad">5. Active Directory</h2>
+    <p>A single Active Directory forest and domain <code>corp.local</code> manages all identities. The domain functional level is Windows Server 2016 to support modern Kerberos features. A single Domain Controller (DC-01) is used given the small scale; a read-only DC (RODC) is planned as a failover.</p>
+
+    <h3>Organisational Unit tree</h3>
+
+  </article>
+
+  <div class="wide-section reveal">
+    <div class="ou-tree">
+<span class="ou-domain">corp.local</span>
+├── <span class="ou-name">OU=Servers</span>         <span class="ou-comment">← server computer objects</span>
+│   ├── DC-01
+│   ├── APACHE-INT-01
+│   ├── FILE-01
+│   └── BACKUP-01
+├── <span class="ou-name">OU=Workstations</span>    <span class="ou-comment">← employee PCs (GPO: security baseline)</span>
+│   ├── OU=Management
+│   ├── OU=IT
+│   ├── OU=Developers
+│   ├── OU=HR
+│   ├── OU=Finance
+│   └── OU=Sales
+├── <span class="ou-name">OU=Users</span>           <span class="ou-comment">← user accounts</span>
+│   ├── OU=Management
+│   ├── OU=IT
+│   ├── OU=Developers
+│   ├── OU=HR
+│   ├── OU=Finance
+│   └── OU=Sales
+└── <span class="ou-name">OU=Groups</span>          <span class="ou-comment">← security &amp; distribution groups</span>
+    ├── GRP_IT_Admins
+    ├── GRP_Developers
+    ├── GRP_HR
+    ├── GRP_Finance
+    ├── GRP_Sales
+    ├── GRP_Management
+    └── GRP_AllUsers</div>
+  </div>
+
+  <article class="article-content" style="margin-top:0;">
+
+    <!-- 6. User Roles -->
+    <h2 id="users">6. User Roles &amp; OU Mapping</h2>
+    <p>Each employee is placed in the correct OU and assigned to the relevant security group. Share permissions, GPO scope, and VLAN 30 DHCP reservations are all tied to AD group membership.</p>
+
+  </article>
+
+  <div class="wide-section reveal">
+    <table class="infra-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Count</th>
+          <th>OU</th>
+          <th>AD Group</th>
+          <th>File shares</th>
+          <th>Admin rights</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>IT Administrator</td>
+          <td>1</td>
+          <td><code>OU=IT</code></td>
+          <td><code>GRP_IT_Admins</code></td>
+          <td>All + IT</td>
+          <td>Domain Admin</td>
+        </tr>
+        <tr>
+          <td>Network Administrator</td>
+          <td>1</td>
+          <td><code>OU=IT</code></td>
+          <td><code>GRP_IT_Admins</code></td>
+          <td>All + IT</td>
+          <td>Domain Admin</td>
+        </tr>
+        <tr>
+          <td>CEO / CTO</td>
+          <td>2</td>
+          <td><code>OU=Management</code></td>
+          <td><code>GRP_Management</code></td>
+          <td>All (read), Mgmt</td>
+          <td>Local admin (own PC)</td>
+        </tr>
+        <tr>
+          <td>Developer</td>
+          <td>3</td>
+          <td><code>OU=Developers</code></td>
+          <td><code>GRP_Developers</code></td>
+          <td>Dev, Common</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>HR</td>
+          <td>2</td>
+          <td><code>OU=HR</code></td>
+          <td><code>GRP_HR</code></td>
+          <td>HR, Common</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Accounting / Finance</td>
+          <td>2</td>
+          <td><code>OU=Finance</code></td>
+          <td><code>GRP_Finance</code></td>
+          <td>Finance, Common</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Sales</td>
+          <td>2</td>
+          <td><code>OU=Sales</code></td>
+          <td><code>GRP_Sales</code></td>
+          <td>Sales, Common</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>Helpdesk / Support</td>
+          <td>1</td>
+          <td><code>OU=IT</code></td>
+          <td><code>GRP_IT_Admins</code></td>
+          <td>All + IT</td>
+          <td>Local admin on all PCs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <article class="article-content" style="margin-top:0;">
+
+    <!-- 7. Apache -->
+    <h2 id="apache">7. Apache Configuration</h2>
+    <p>Two separate Apache instances handle internal and public traffic. The internal server enforces LDAP authentication so that only domain users can access the intranet. The public server sits in the DMZ and exposes only HTTPS with a hardened TLS configuration.</p>
+
+    <h3>APACHE-INT-01 — Intranet virtual host</h3>
+<pre><code># /etc/apache2/sites-enabled/intranet.corp.local.conf
+&lt;VirtualHost *:443&gt;
+    ServerName intranet.corp.local
+    DocumentRoot /var/www/intranet
+
+    SSLEngine on
+    SSLCertificateFile    /etc/ssl/corp/intranet.crt
+    SSLCertificateKeyFile /etc/ssl/corp/intranet.key
+
+    # LDAP authentication — AD domain users only
+    &lt;Directory /var/www/intranet&gt;
+        AuthType Basic
+        AuthName "Corporate Intranet"
+        AuthBasicProvider ldap
+        AuthLDAPURL "ldap://192.168.20.10/DC=corp,DC=local?sAMAccountName"
+        AuthLDAPBindDN "CN=apache-bind,OU=ServiceAccounts,DC=corp,DC=local"
+        AuthLDAPBindPassword "Str0ngS3rviceP@ss!"
+        Require ldap-group CN=GRP_AllUsers,OU=Groups,DC=corp,DC=local
+    &lt;/Directory&gt;
+
+    # Security headers
+    Header always set Strict-Transport-Security "max-age=63072000"
+    Header always set X-Frame-Options DENY
+    Header always set X-Content-Type-Options nosniff
+&lt;/VirtualHost&gt;
+
+# Redirect HTTP → HTTPS
+&lt;VirtualHost *:80&gt;
+    ServerName intranet.corp.local
+    Redirect permanent / https://intranet.corp.local/
+&lt;/VirtualHost&gt;</code></pre>
+
+    <h3>APACHE-DMZ-01 — Public website virtual host</h3>
+<pre><code># /etc/apache2/sites-enabled/company.conf
+&lt;VirtualHost *:443&gt;
+    ServerName www.company.com
+    DocumentRoot /var/www/html
+
+    SSLEngine on
+    SSLCertificateFile    /etc/letsencrypt/live/company.com/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/company.com/privkey.pem
+
+    # TLS hardening — TLS 1.2+ only
+    SSLProtocol -all +TLSv1.2 +TLSv1.3
+    SSLCipherSuite ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384
+    SSLHonorCipherOrder on
+
+    # ModSecurity WAF
+    SecRuleEngine On
+    SecRequestBodyAccess On
+    Include /etc/modsecurity/crs/crs-setup.conf
+    Include /etc/modsecurity/crs/rules/*.conf
+
+    # Security headers
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+    Header always set X-Frame-Options SAMEORIGIN
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=()"
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:80&gt;
+    ServerName www.company.com
+    Redirect permanent / https://www.company.com/
+&lt;/VirtualHost&gt;</code></pre>
+
+    <!-- 8. GPO -->
+    <h2 id="gpo">8. Group Policy Objects</h2>
+    <p>GPOs are applied at the OU level. The Default Domain Policy enforces a baseline for all users, while department-specific GPOs add restrictions or map drives according to the group.</p>
+
+  </article>
+
+  <div class="wide-section">
+    <div class="skills-grid stagger">
+      <div class="skill-card">
+        <div class="skill-icon">🔐</div>
+        <h4>Password Policy</h4>
+        <p>Minimum 12 characters · Complexity required · Max age 90 days · History 10 passwords</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔒</div>
+        <h4>Account Lockout</h4>
+        <p>Lock after 5 failed attempts · 15 min observation window · Admin reset required</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💿</div>
+        <h4>USB Restriction</h4>
+        <p>Removable storage disabled for all OUs except GRP_IT_Admins</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🖥️</div>
+        <h4>Screen Lock</h4>
+        <p>Screensaver with password after 10 min · No user override allowed</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📂</div>
+        <h4>Drive Mapping</h4>
+        <p>Department shares auto-mapped at login via GPO preferences (item-level targeting)</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔄</div>
+        <h4>Windows Update</h4>
+        <p>WSUS managed · Patches deployed Tuesday nights · Servers patched in maintenance window</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🛡️</div>
+        <h4>Windows Defender</h4>
+        <p>Forced on · Cloud protection enabled · Tamper protection locked by GPO</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🚫</div>
+        <h4>AppLocker</h4>
+        <p>Block unsigned executables in %TEMP% · Whitelist-based for finance &amp; HR OUs</p>
+      </div>
+    </div>
+  </div>
+
+  <article class="article-content" style="margin-top:2rem;">
+
+    <!-- 9. Security -->
+    <h2 id="security">9. Security Policies</h2>
+    <p>Beyond GPOs, the infrastructure enforces network-level and host-level security policies to reduce the attack surface and provide detection capability.</p>
+
+    <h3>pfSense firewall rules (key rules)</h3>
+    <ul class="rule-list">
+      <li><span class="rule-icon">✅</span><div><strong>VLAN 10 → any:</strong> Management VLAN has full access to all VLANs for administrative purposes.</div></li>
+      <li><span class="rule-icon">✅</span><div><strong>VLAN 30 → VLAN 20 (TCP 443, 445, 636):</strong> Users can reach HTTPS intranet, file shares (SMB), and LDAPS for authentication only.</div></li>
+      <li><span class="rule-icon">❌</span><div><strong>VLAN 30 → VLAN 20 (all other ports):</strong> Blocked — users cannot directly access server administration interfaces.</div></li>
+      <li><span class="rule-icon">✅</span><div><strong>WAN → VLAN 40 (TCP 80, 443):</strong> Internet traffic is NAT-forwarded to APACHE-DMZ-01 only.</div></li>
+      <li><span class="rule-icon">❌</span><div><strong>VLAN 40 → VLAN 20/30:</strong> DMZ is fully blocked from reaching internal LAN — a compromise of the public server does not grant LAN access.</div></li>
+      <li><span class="rule-icon">❌</span><div><strong>VLAN 50 → any internal:</strong> Guest WiFi is completely isolated — Internet egress only through NAT.</div></li>
+      <li><span class="rule-icon">✅</span><div><strong>Suricata IDS/IPS:</strong> Enabled on WAN interface with Emerging Threats ruleset. Alerts forwarded to syslog on BACKUP-01.</div></li>
+    </ul>
+
+    <h3>TLS / PKI</h3>
+    <p>An internal Certificate Authority is deployed on DC-01 using Windows Server CA. All internal services (intranet, LDAPS, SMB over TLS) use certificates issued by this CA, pushed to workstations via GPO. The public Apache server uses a Let's Encrypt certificate renewed automatically with Certbot.</p>
+
+    <h3>Audit &amp; Logging</h3>
+    <p>Windows Event Forwarding (WEF) is configured to centralise Security event logs (4624, 4625, 4648, 4688, 4768, 4771) from all workstations and servers to a collector on BACKUP-01. pfSense firewall logs and Apache access logs are also shipped to the same collector for a single pane of glass.</p>
+
+    <!-- 10. Takeaways -->
+    <h2 id="takeaways">10. Key Takeaways</h2>
+    <p>This project highlights several important principles for small enterprise network design:</p>
+    <ul>
+      <li><strong>Segmentation is the first line of defence.</strong> VLANs and strict firewall rules limit lateral movement even if a single workstation is compromised.</li>
+      <li><strong>Centralised identity via AD pays dividends.</strong> GPO enforcement, group-based access, and single sign-on simplify administration and reduce the attack surface caused by inconsistent local configurations.</li>
+      <li><strong>DMZ separation is non-negotiable.</strong> Public-facing services must never share a network segment with internal infrastructure. A compromised web server should be a contained incident, not a stepping stone.</li>
+      <li><strong>Apache security requires active hardening.</strong> Vanilla Apache installations are too permissive. ModSecurity, TLS configuration, header policy, and LDAP authentication must be explicitly configured.</li>
+      <li><strong>Logging everything enables detection.</strong> Without centralised, tamper-resistant logs, incident response is almost impossible. Even small infrastructures benefit from Windows Event Forwarding and syslog aggregation.</li>
+      <li><strong>Backups are part of the security architecture.</strong> Encrypted, off-site backups with automated restore testing are the last line of defence against ransomware and accidental data loss.</li>
+    </ul>
+
+  </article>
+
+  <!-- ==================== BACK LINK ==================== -->
+  <div class="container" style="padding-bottom:3rem;text-align:center;">
+    <a href="../projects.html" class="btn btn-secondary">← Back to Projects</a>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-text">© 2026 aykino's cybersecurity blog. Built with passion and coffee ☕</span>
+      <div class="footer-links">
+        <a href="https://github.com/aykinooo" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
