@@ -1,48 +1,48 @@
 {
-  "generated_at": "2026-02-19T17:11:57+00:00",
+  "generated_at": "2026-02-19T18:05:01+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
     {
-      "id": "CVE-2026-2274",
-      "summary": "A SSRF and Arbitrary File Read vulnerability in AppSheet Core in Google AppSheet prior to 2025-11-23 allows an authenticated remote attacker to read sensitive local files and access internal network resources via crafted requests to the production cluster.\n\n\n\n\n\nThis vulnerability was patched and no customer action is needed.",
-      "published": "2026-02-19T16:27:16.287",
+      "id": "CVE-2026-2232",
+      "summary": "The Product Table and List Builder for WooCommerce Lite plugin for WordPress is vulnerable to time-based SQL Injection via the 'search' parameter in all versions up to, and including, 4.6.2 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+      "published": "2026-02-19T17:24:51.763",
+      "cvss": 7.5,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2232"
+    },
+    {
+      "id": "CVE-2026-26336",
+      "summary": "Hyland Alfresco allows unauthenticated attackers to read arbitrary files from protected directories (like WEB-INF) via the \"/share/page/resource/\" endpoint, thus leading to the disclosure of sensitive configuration files.",
+      "published": "2026-02-19T17:24:50.943",
+      "cvss": 7.5,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26336"
+    },
+    {
+      "id": "CVE-2026-26030",
+      "summary": "Semantic Kernel, Microsoft's semantic kernel Python SDK, has a remote code execution vulnerability in versions prior to 1.39.4, specifically within the `InMemoryVectorStore` filter functionality. The problem has been fixed in version `python-1.39.4`. Users should upgrade this version or higher. As a workaround, avoid using `InMemoryVectorStore` for production scenarios.",
+      "published": "2026-02-19T17:24:50.487",
+      "cvss": 9.9,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26030"
+    },
+    {
+      "id": "CVE-2026-26016",
+      "summary": "Wings is the server control plane for Pterodactyl, a free, open-source game server management panel. Prior to version 1.12.1, a missing authorization check in multiple controllers allows any user with access to a node secret token to fetch information about any server on a Pterodactyl instance, even if that server is associated with a different node. This issue stems from missing logic to verify that the node requesting server data is the same node that the server is associated with. Any authenticated Wings node can retrieve server installation scripts (potentially containing secret values) and manipulate the installation status of servers belonging to other nodes. Wings nodes may also manipulate the transfer status of servers belonging to other nodes. This vulnerability requires a user to acquire a secret access token for a node. Unless a user gains access to a Wings secret access token they would not be able to access any of these vulnerable endpoints, as every endpoint requires a valid node access token. A single compromised Wings node daemon token (stored in plaintext at `/etc/pterodactyl/config.yml`) grants access to sensitive configuration data of every server on the panel, rather than only to servers that the node has access to. An attacker can use this information to move laterally through the system, send excessive notifications, destroy server data on other nodes, and otherwise exfiltrate secrets that they should not have access to with only a node token. Additionally, triggering a false transfer success causes the panel to delete the server from the source node, resulting in permanent data loss. Users should upgrade to version 1.12.1 to receive a fix.",
+      "published": "2026-02-19T17:24:50.293",
       "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2274"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26016"
     },
     {
-      "id": "CVE-2026-26345",
-      "summary": "SPIP before 4.4.8 allows Cross-Site Scripting (XSS) in the public area for certain edge-case usage patterns. The echapper_html_suspect() function does not adequately detect all forms of malicious content, permitting an attacker to inject scripts that execute in a visitor's browser. This vulnerability is not mitigated by the SPIP security screen.",
-      "published": "2026-02-19T16:27:16.003",
-      "cvss": 4.7,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26345"
+      "id": "CVE-2026-25998",
+      "summary": "strongMan is a management interface for strongSwan, an OpenSource IPsec-based VPN. When storing credentials in the database (private keys, EAP secrets), strongMan encrypts the corresponding database fields. So far it used AES in CTR mode with a global database key. Together with an initialization vector (IV), a key stream is generated to encrypt the data in the database fields. But because strongMan did not generate individual IVs, every database field was encrypted using the same key stream. An attacker that has access to the database can use this to recover the encrypted credentials. In particular, because certificates, which have to be considered public information, are also encrypted using the same mechanism, an attacker can directly recover a large chunk of the key stream, which allows them to decrypt basically all other secrets especially ECDSA private keys and EAP secrets, which are usually a lot shorter. Version 0.2.0 fixes the issue by switching to AES-GCM-SIV encryption with a random nonce and an individually derived encryption key, using HKDF, for each encrypted value. Database migrations are provided to automatically re-encrypt all credentials.",
+      "published": "2026-02-19T17:24:50.127",
+      "cvss": null,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25998"
     },
     {
-      "id": "CVE-2026-26223",
-      "summary": "SPIP before 4.4.8 allows Cross-Site Scripting (XSS) in the private area via malicious iframe tags. The application does not properly sandbox or escape iframe content in the back-office, allowing an attacker to inject and execute malicious scripts. The fix adds a sandbox attribute to iframe tags in the private area. This vulnerability is not mitigated by the SPIP security screen.",
-      "published": "2026-02-19T16:27:15.817",
-      "cvss": 5.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26223"
-    },
-    {
-      "id": "CVE-2026-25940",
-      "summary": "jsPDF is a library to generate PDFs in JavaScript. Prior to 4.2.0, user control of properties and methods of the Acroform module allows users to inject arbitrary PDF objects, such as JavaScript actions. If given the possibility to pass unsanitized input to one of the following property, a user can inject arbitrary PDF objects, such as JavaScript actions, which are executed when the victim hovers over the radio option. The vulnerability has been fixed in jsPDF@4.2.0. As a workaround, sanitize user input before passing it to the vulnerable API members.",
-      "published": "2026-02-19T16:27:15.660",
-      "cvss": 8.1,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25940"
-    },
-    {
-      "id": "CVE-2026-25766",
-      "summary": "Echo is a Go web framework. In versions 5.0.0 through 5.0.2 on Windows, Echo\u2019s `middleware.Static` using the default filesystem allows path traversal via backslashes, enabling unauthenticated remote file read outside the static root. In `middleware/static.go`, the requested path is unescaped and normalized with `path.Clean` (URL semantics). `path.Clean` does not treat `\\` as a path separator, so `..\\` sequences remain in the cleaned path. The resulting path is then passed to `currentFS.Open(...)`. When the filesystem is left at the default (nil), Echo uses `defaultFS` which calls `os.Open` (`echo.go:792`). On Windows, `os.Open` treats `\\` as a path separator and resolves `..\\`, allowing traversal outside the static root. Version 5.0.3 fixes the issue.",
-      "published": "2026-02-19T16:27:15.497",
-      "cvss": 5.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25766"
-    },
-    {
-      "id": "CVE-2026-25739",
-      "summary": "Indico is an event management system that uses Flask-Multipass, a multi-backend authentication system for Flask. Versions prior to 3.3.10 are vulnerable to cross-site scripting when uploading certain file types as materials. Users should upgrade to version 3.3.10 to receive a patch. To apply the fix itself updating is sufficient, but to benefit from the strict Content Security Policy (CSP) Indico now applies by default for file downloads, update the webserver config in case one uses nginx with Indico's `STATIC_FILE_METHOD` set to `xaccelredirect`. For further directions, consult the GitHub Security advisory or Indico setup documentation. Some workarounds are available. Use the webserver config to apply a strict CSP for material download endpoints, and/or only let trustworthy users create content (including material uploads, which speakers can typically do as well) on Indico.",
-      "published": "2026-02-19T16:27:15.270",
-      "cvss": 5.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25739"
+      "id": "CVE-2026-24834",
+      "summary": "Kata Containers is an open source project focusing on a standard implementation of lightweight Virtual Machines (VMs) that perform like containers. In versions prior to 3.27.0, an issue in Kata with Cloud Hypervisor allows a user of the container to modify the file system used by the Guest micro VM ultimately achieving arbitrary code execution as root in said VM. The current understanding is this doesn\u2019t impact the security of the Host or of other containers / VMs running on that Host (note that arm64 QEMU lacks NVDIMM read-only support: It is believed that until the upstream QEMU gains this capability, a guest write could reach the image file). Version 3.27.0 patches the issue.",
+      "published": "2026-02-19T17:24:49.823",
+      "cvss": 9.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24834"
     }
   ]
 }
