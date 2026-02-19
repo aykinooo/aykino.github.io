@@ -1,48 +1,48 @@
 {
-  "generated_at": "2026-02-19T19:49:11+00:00",
+  "generated_at": "2026-02-19T20:49:01+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
     {
-      "id": "CVE-2026-27475",
-      "summary": "SPIP before 4.4.9 allows Insecure Deserialization in the public area through the table_valeur filter and the DATA iterator, which accept serialized data. An attacker who can place malicious serialized content (a pre-condition requiring prior access or another vulnerability) can trigger arbitrary object instantiation and potentially achieve code execution. The use of serialized data in these components has been deprecated and will be removed in SPIP 5. This vulnerability is not mitigated by the SPIP security screen.",
-      "published": "2026-02-19T19:22:30.720",
-      "cvss": 8.1,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27475"
+      "id": "CVE-2026-27013",
+      "summary": "Fabric.js is a Javascript HTML5 canvas library. Prior to version 7.2.0, Fabric.js applies `escapeXml()` to text content during SVG export (`src/shapes/Text/TextSVGExportMixin.ts:186`) but fails to apply it to other user-controlled string values that are interpolated into SVG attribute markup. When attacker-controlled JSON is loaded via `loadFromJSON()` and later exported via `toSVG()`, the unescaped values break out of XML attributes and inject arbitrary SVG elements including event handlers. Any application that accepts user-supplied JSON (via `loadFromJSON()`, collaborative sharing, import features, CMS plugins) and renders the `toSVG()` output in a browser context (SVG preview, export download rendered in-page, email template, embed) is vulnerable to stored XSS. An attacker can execute arbitrary JavaScript in the victim's browser session. Version 7.2.0 contains a fix.",
+      "published": "2026-02-19T20:25:44.230",
+      "cvss": 7.6,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27013"
     },
     {
-      "id": "CVE-2026-27474",
-      "summary": "SPIP before 4.4.9 allows Cross-Site Scripting (XSS) in the private area, complementing an incomplete fix from SPIP 4.4.8. The echappe_anti_xss() function was not systematically applied to input, form, button, and anchor (a) HTML tags, allowing an attacker to inject malicious scripts through these elements. This vulnerability is not mitigated by the SPIP security screen.",
-      "published": "2026-02-19T19:22:30.540",
-      "cvss": 5.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27474"
+      "id": "CVE-2026-26318",
+      "summary": "systeminformation is a System and OS information library for node.js. Versions prior to 5.31.0 are vulnerable to command injection via unsanitized `locate` output in `versions()`. Version 5.31.0 fixes the issue.",
+      "published": "2026-02-19T20:25:44.063",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26318"
     },
     {
-      "id": "CVE-2026-27473",
-      "summary": "SPIP before 4.4.9 allows Stored Cross-Site Scripting (XSS) via syndicated sites in the private area. The #URL_SYNDIC output is not properly sanitized on the private syndicated site page, allowing an attacker who can set a malicious syndication URL to inject persistent scripts that execute when other administrators view the syndicated site details.",
-      "published": "2026-02-19T19:22:30.363",
-      "cvss": 6.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27473"
+      "id": "CVE-2026-26280",
+      "summary": "systeminformation is a System and OS information library for node.js. In versions prior to 5.30.8, a command injection vulnerability in the `wifiNetworks()` function allows an attacker to execute arbitrary OS commands via an unsanitized network interface parameter in the retry code path. In `lib/wifi.js`, the `wifiNetworks()` function sanitizes the `iface` parameter on the initial call (line 437). However, when the initial scan returns empty results, a `setTimeout` retry (lines 440-441) calls `getWifiNetworkListIw(iface)` with the **original unsanitized** `iface` value, which is passed directly to `execSync('iwlist ${iface} scan')`. Any application passing user-controlled input to `si.wifiNetworks()` is vulnerable to arbitrary command execution with the privileges of the Node.js process. Version 5.30.8 fixes the issue.",
+      "published": "2026-02-19T20:25:43.880",
+      "cvss": 8.4,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26280"
     },
     {
-      "id": "CVE-2026-27472",
-      "summary": "SPIP before 4.4.9 allows Blind Server-Side Request Forgery (SSRF) via syndicated sites in the private area. When editing a syndicated site, the application does not verify that the syndication URL is a valid remote URL, allowing an authenticated attacker to make the server issue requests to arbitrary internal or external destinations. This vulnerability is not mitigated by the SPIP security screen.",
-      "published": "2026-02-19T19:22:30.187",
-      "cvss": 4.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27472"
+      "id": "CVE-2026-26278",
+      "summary": "fast-xml-parser allows users to validate XML, parse XML to JS object, or build XML from JS object without C/C++ based libraries and no callback. In versions 4.1.3 through 5.3.5, the XML parser can be forced to do an unlimited amount of entity expansion. With a very small XML input, it\u2019s possible to make the parser spend seconds or even minutes processing a single request, effectively freezing the application. Version 5.3.6 fixes the issue. As a workaround, avoid using DOCTYPE parsing by `processEntities: false` option.",
+      "published": "2026-02-19T20:25:43.717",
+      "cvss": 7.5,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26278"
     },
     {
-      "id": "CVE-2026-26059",
-      "summary": "ChurchCRM is an open-source church management system. In versions prior to 6.8.2, it was possible for an authenticated user with permission to edit groups to store a JavaScript payload that would execute when the group was viewed in the Group View. Version 6.8.2 fixes this issue.",
-      "published": "2026-02-19T19:22:29.693",
+      "id": "CVE-2026-26267",
+      "summary": "soroban-sdk is a Rust SDK for Soroban contracts. Prior to versions 22.0.10, 23.5.2, and 25.1.1, the `#[contractimpl]` macro contains a bug in how it wires up function calls. `#[contractimpl]` generates code that uses `MyContract::value()` style calls even when it's processing the trait version. This means if an inherent function is also defined with the same name, the inherent function gets called instead of the trait function. This means the Wasm-exported entry point silently calls the wrong function when two conditions are met simultaneously: First, an `impl Trait for MyContract` block is defined with one or more functions, with `#[contractimpl]` applied. Second, an `impl MyContract` block is defined with one or more identically named functions, without `#[contractimpl]` applied. If the trait version contains important security checks, such as verifying the caller is authorized, that the inherent version does not, those checks are bypassed. Anyone interacting with the contract through its public interface will call the wrong function. The problem is patched in `soroban-sdk-macros` versions 22.0.10, 23.5.2, and 25.1.1. The fix changes the generated call from `<Type>::func()` to `<Type as Trait>::func()` when processing trait implementations, ensuring Rust resolves to the trait associated function regardless of whether an inherent function with the same name exists. Users should upgrade to `soroban-sdk-macros` 22.0.10, 23.5.2, or 25.1.1 and recompile their contracts. If upgrading is not immediately possible, contract developers can avoid the issue by ensuring that no inherent associated function on the contract type shares a name with any function in the trait implementation. Renaming or removing the conflicting inherent function eliminates the ambiguity and causes the macro-generated code to correctly resolve to the trait function.",
+      "published": "2026-02-19T20:25:43.530",
+      "cvss": 7.5,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26267"
+    },
+    {
+      "id": "CVE-2026-26205",
+      "summary": "opa-envoy-plugun is a plugin to enforce OPA policies with Envoy. Versions prior to 1.13.2-envoy-2 have a vulnerability in how the `input.parsed_path` field is constructed. HTTP request paths are treated as full URIs when parsed; interpreting leading path segments prefixed with double slashes (`//`) as authority components, and therefore dropping them from the parsed path. This creates a path interpretation mismatch between authorization policies and backend servers, enabling attackers to bypass access controls by crafting requests where the authorization filter evaluates a different path than the one ultimately served. Version 1.13.2-envoy-2 fixes the issue.",
+      "published": "2026-02-19T20:25:43.263",
       "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26059"
-    },
-    {
-      "id": "CVE-2026-26057",
-      "summary": "Skill Scanner is a security scanner for AI Agent Skills that detects prompt injection, data exfiltration, and malicious code patterns. A vulnerability in the API Server of Skill Scanner could allow a unauthenticated, remote attacker to interact with the server API and either trigger a denial of service (DoS) condition or upload arbitrary files. This vulnerability is due to an erroneous binding to multiple interfaces. An attacker could exploit this vulnerability by sending API requests to a device exposing the affected API Server. A successful exploit could allow the attacker to consume an excessive amount of resources (memory starvation) or to upload files to arbitrary folders on the affected device. This vulnerability affects Skill-scanner 1.0.1 and earlier releases when the API Server is enabled. The API Server is not enabled by default. Skill-scanner software releases 1.0.2 and later contain the fix for this vulnerability.",
-      "published": "2026-02-19T19:22:29.537",
-      "cvss": 6.5,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26057"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26205"
     }
   ]
 }
