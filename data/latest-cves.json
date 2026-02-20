@@ -1,48 +1,48 @@
 {
-  "generated_at": "2026-02-19T23:44:42+00:00",
+  "generated_at": "2026-02-20T03:10:05+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
     {
-      "id": "CVE-2026-26958",
-      "summary": "filippo.io/edwards25519 is a Go library implementing the edwards25519 elliptic curve with APIs for building cryptographic primitives. In versions 1.1.0 and earlier, MultiScalarMult produces invalid results or undefined behavior if the receiver is not the identity point. If (*Point).MultiScalarMult is called on an initialized point that is not the identity point, it returns an incorrect result. If the method is called on an uninitialized point, the behavior is undefined. In particular, if the receiver is the zero value, MultiScalarMult returns an invalid point that compares Equal to every other point. Note that MultiScalarMult is a rarely used, advanced API. For example, users who depend on filippo.io/edwards25519 only through github.com/go-sql-driver/mysql are not affected. This issue has been fixed in version 1.1.1.",
-      "published": "2026-02-19T23:16:26.577",
-      "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26958"
+      "id": "CVE-2026-2820",
+      "summary": "A security flaw has been discovered in Fujian Smart Integrated Management Platform System up to 7.5. This issue affects some unknown processing of the file /Module/CRXT/Controller/XAccessPermissionPlus.ashx. The manipulation of the argument DeviceIDS results in sql injection. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks.",
+      "published": "2026-02-20T02:16:55.593",
+      "cvss": 7.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2820"
     },
     {
-      "id": "CVE-2026-26953",
-      "summary": "Pi-hole Admin Interface is a web interface for managing Pi-hole, a network-level ad and internet tracker blocking application.  Versions 6.0 and above have a Stored HTML Injection vulnerability in the active sessions table located on the API settings page, allowing an attacker with valid credentials to inject arbitrary HTML code that will be rendered in the browser of any administrator who visits the active sessions page. The rowCallback function contains the value data.x_forwarded_for, which is directly concatenated into an HTML string and inserted into the DOM using jQuery\u2019s .html() method. This method interprets the content as HTML, which means that any HTML tags present in the value will be parsed and rendered by the browser. An attacker can use common tools such as curl, wget, Python requests, Burp Suite, or even JavaScript fetch() to send an authentication request with an X-Forwarded-For header that contains malicious HTML code instead of a legitimate IP address. Since Pi-hole implements a Content Security Policy (CSP) that blocks inline JavaScript, the impact is limited to pure HTML injection without the ability to execute scripts. This issue has been fixed in version 6.4.1.",
-      "published": "2026-02-19T23:16:26.413",
+      "id": "CVE-2026-2819",
+      "summary": "A vulnerability was identified in Dromara RuoYi-Vue-Plus up to 5.5.3. This vulnerability affects the function SaServletFilter of the file /workflow/instance/deleteByInstanceIds of the component Workflow Module. The manipulation leads to missing authorization. The attack may be initiated remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-02-20T02:16:55.350",
+      "cvss": 6.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2819"
+    },
+    {
+      "id": "CVE-2026-27016",
+      "summary": "LibreNMS is an auto-discovering PHP/MySQL/SNMP based network monitoring tool. Versions 24.10.0 through 26.1.1 are vulnerable to Stored XSS via the unit parameter in Custom OID. The Custom OID functionality lacks strip_tags() sanitization while other fields (name, oid, datatype) are sanitized. The unsanitized value is stored in the database and rendered without HTML escaping. This issue is fixed in version 26.2.0.",
+      "published": "2026-02-20T02:16:55.140",
       "cvss": 5.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26953"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27016"
     },
     {
-      "id": "CVE-2026-26952",
-      "summary": "Pi-hole Admin Interface is a web interface for managing Pi-hole, a network-level ad and internet tracker blocking application. Versions 6.4 and below are vulnerable to stored HTML injection through the local DNS records configuration page, which allows an authenticated administrator to inject code that is stored in the Pi-hole configuration and rendered every time the DNS records table is viewed. The populateDataTable() function contains a data variable with the full DNS record value exactly as entered by the user and returned by the API. This value is inserted directly into the data-tag HTML attribute without any escaping or sanitization of special characters. When an attacker supplies a value containing double quotes (\"), they can prematurely \u201cclose\u201d the data-tag attribute and inject additional HTML attributes into the element. Since Pi-hole implements a Content Security Policy (CSP) that blocks inline JavaScript, the impact is limited. This issue has been fixed in version 6.4.1.",
-      "published": "2026-02-19T23:16:26.243",
-      "cvss": 5.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26952"
+      "id": "CVE-2026-26990",
+      "summary": "LibreNMS is an auto-discovering PHP/MySQL/SNMP based network monitoring tool. Versions 25.12.0 and below have a Time-Based Blind SQL Injection vulnerability in address-search.inc.php via the address parameter. When a crafted subnet prefix is supplied, the prefix value is concatenated directly into an SQL query without proper parameter binding, allowing an attacker to manipulate query logic and infer database information through time-based conditional responses. This vulnerability requires authentication and is exploitable by any authenticated user. This issue has been fixedd in version 26.2.0.",
+      "published": "2026-02-20T02:16:54.870",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26990"
     },
     {
-      "id": "CVE-2026-26327",
-      "summary": "OpenClaw is a personal AI assistant. Discovery beacons (Bonjour/mDNS and DNS-SD) include TXT records such as `lanHost`, `tailnetDns`, `gatewayPort`, and `gatewayTlsSha256`. TXT records are unauthenticated. Prior to version 2026.2.14, some clients treated TXT values as authoritative routing/pinning inputs. iOS and macOS used TXT-provided host hints (`lanHost`/`tailnetDns`) and ports (`gatewayPort`) to build the connection URL. iOS and Android allowed the discovery-provided TLS fingerprint (`gatewayTlsSha256`) to override a previously stored TLS pin. On a shared/untrusted LAN, an attacker could advertise a rogue `_openclaw-gw._tcp` service. This could cause a client to connect to an attacker-controlled endpoint and/or accept an attacker certificate, potentially exfiltrating Gateway credentials (`auth.token` / `auth.password`) during connection. As of time of publication, the iOS and Android apps are alpha/not broadly shipped (no public App Store / Play Store release). Practical impact is primarily limited to developers/testers running those builds, plus any other shipped clients relying on discovery on a shared/untrusted LAN. Version 2026.2.14 fixes the issue. Clients now prefer the resolved service endpoint (SRV + A/AAAA) over TXT-provided routing hints. Discovery-provided fingerprints no longer override stored TLS pins. In iOS/Android, first-time TLS pins require explicit user confirmation (fingerprint shown; no silent TOFU) and discovery-based direct connects are TLS-only. In Android, hostname verification is no longer globally disabled (only bypassed when pinning).",
-      "published": "2026-02-19T23:16:26.100",
+      "id": "CVE-2026-26989",
+      "summary": "LibreNMS is an auto-discovering PHP/MySQL/SNMP based network monitoring tool. Versions 25.12.0 and below are affected by a Stored Cross-Site Scripting (XSS) vulnerability in the Alert Rules workflow. An attacker with administrative privileges can inject malicious scripts that execute in the browser context of any user who accesses the Alert Rules page. This issue has been fixed in version 26.2.0.",
+      "published": "2026-02-20T02:16:54.710",
+      "cvss": 4.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26989"
+    },
+    {
+      "id": "CVE-2026-26988",
+      "summary": "LibreNMS is an auto-discovering PHP/MySQL/SNMP based network monitoring tool. Versions 25.12.0 and below contain an SQL Injection vulnerability in the ajax_table.php endpoint. The application fails to properly sanitize or parameterize user input when processing IPv6 address searches. Specifically, the address parameter is split into an address and a prefix, and the prefix portion is directly concatenated into the SQL query string without validation. This allows an attacker to inject arbitrary SQL commands, potentially leading to unauthorized data access or database manipulation. This issue has been fixed in version 26.2.0.",
+      "published": "2026-02-20T02:16:54.550",
       "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26327"
-    },
-    {
-      "id": "CVE-2026-26326",
-      "summary": "OpenClaw is a personal AI assistant. Prior to version 2026.2.14, `skills.status` could disclose secrets to `operator.read` clients by returning raw resolved config values in `configChecks` for skill `requires.config` paths. Version 2026.2.14 stops including raw resolved config values in requirement checks (return only `{ path, satisfied }`) and narrows the Discord skill requirement to the token key. In addition to upgrading, users should rotate any Discord tokens that may have been exposed to read-scoped clients.",
-      "published": "2026-02-19T23:16:25.950",
-      "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26326"
-    },
-    {
-      "id": "CVE-2026-26325",
-      "summary": "OpenClaw is a personal AI assistant. Prior to version 2026.2.14, a mismatch between `rawCommand` and `command[]` in the node host `system.run` handler could cause allowlist/approval evaluation to be performed on one command while executing a different argv. This only impacts deployments that use the node host / companion node execution path (`system.run` on a node), enable allowlist-based exec policy (`security=allowlist`) with approval prompting driven by allowlist misses (for example `ask=on-miss`), allow an attacker to invoke `system.run`. Default/non-node configurations are not affected. Version 2026.2.14 enforces `rawCommand`/`command[]` consistency (gateway fail-fast + node host validation).",
-      "published": "2026-02-19T23:16:25.800",
-      "cvss": 7.2,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26325"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26988"
     }
   ]
 }
