@@ -1,10 +1,24 @@
 {
-  "generated_at": "2026-02-20T11:45:58+00:00",
+  "generated_at": "2026-02-20T13:32:49+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
     {
+      "id": "CVE-2026-2486",
+      "summary": "The Master Addons For Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'ma_el_bh_table_btn_text' parameter in versions up to, and including, 2.1.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "published": "2026-02-20T12:16:16.990",
+      "cvss": 6.4,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2486"
+    },
+    {
+      "id": "CVE-2025-10970",
+      "summary": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Kolay Software Inc. Talentics allows Blind SQL Injection.This issue affects Talentics: through 20022026.\n\nNOTE: The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-02-20T12:16:14.530",
+      "cvss": 9.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-10970"
+    },
+    {
       "id": "CVE-2026-21620",
-      "summary": "Relative Path Traversal, Improper Isolation or Compartmentalization vulnerability in erlang otp erlang/otp (tftp_file modules), erlang otp inets (tftp_file modules), erlang otp tftp (tftp_file modules) allows Relative Path Traversal. This vulnerability is associated with program files lib/tftp/src/tftp_file.erl, src/tftp_file.Erl.\n\nThis issue affects otp: from 17.0, from 07b8f441ca711f9812fad9e9115bab3c3aa92f79; otp: from 5.10 before 7.0; otp: from 1.0.",
+      "summary": "Relative Path Traversal, Improper Isolation or Compartmentalization vulnerability in erlang otp erlang/otp (tftp_file modules), erlang otp inets (tftp_file modules), erlang otp tftp (tftp_file modules) allows Relative Path Traversal. This vulnerability is associated with program files lib/tftp/src/tftp_file.erl, src/tftp_file.erl.\n\nThis issue affects otp: from 17.0, from 07b8f441ca711f9812fad9e9115bab3c3aa92f79; otp: from 5.10 before 7.0; otp: from 1.0.",
       "published": "2026-02-20T11:15:56.783",
       "cvss": null,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21620"
@@ -29,20 +43,6 @@
       "published": "2026-02-20T08:17:02.057",
       "cvss": 6.5,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59819"
-    },
-    {
-      "id": "CVE-2026-2825",
-      "summary": "A vulnerability has been found in rachelos WeRSS we-mp-rss up to 1.4.8. This impacts the function fix_html of the file tools/fix.py of the component Article Module. The manipulation leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.",
-      "published": "2026-02-20T07:16:42.470",
-      "cvss": 3.5,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2825"
-    },
-    {
-      "id": "CVE-2026-2824",
-      "summary": "A flaw has been found in Comfast CF-E7 2.6.0.9. This affects the function sub_441CF4 of the file /cgi-bin/mbox-config?method=SET&section=ping_config of the component webmggnt. Executing a manipulation of the argument destination can lead to command injection. The attack may be performed from remote. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-02-20T06:17:01.387",
-      "cvss": 6.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2824"
     }
   ]
 }
