@@ -1,48 +1,48 @@
 {
-  "generated_at": "2026-02-20T03:10:05+00:00",
+  "generated_at": "2026-02-20T04:57:29+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
     {
-      "id": "CVE-2026-2820",
-      "summary": "A security flaw has been discovered in Fujian Smart Integrated Management Platform System up to 7.5. This issue affects some unknown processing of the file /Module/CRXT/Controller/XAccessPermissionPlus.ashx. The manipulation of the argument DeviceIDS results in sql injection. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks.",
-      "published": "2026-02-20T02:16:55.593",
+      "id": "CVE-2026-2821",
+      "summary": "A weakness has been identified in Fujian Smart Integrated Management Platform System up to 7.5. Impacted is an unknown function of the file /Module/CRXT/Controller/XCamera.ashx. This manipulation of the argument ChannelName causes sql injection. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks.",
+      "published": "2026-02-20T03:16:02.137",
       "cvss": 7.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2820"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2821"
     },
     {
-      "id": "CVE-2026-2819",
-      "summary": "A vulnerability was identified in Dromara RuoYi-Vue-Plus up to 5.5.3. This vulnerability affects the function SaServletFilter of the file /workflow/instance/deleteByInstanceIds of the component Workflow Module. The manipulation leads to missing authorization. The attack may be initiated remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-02-20T02:16:55.350",
-      "cvss": 6.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2819"
+      "id": "CVE-2026-2384",
+      "summary": "The Quiz Maker plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's `vc_quizmaker` shortcode in all versions up to, and including, 6.7.1.7 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.\r\nNote: This vulnerability requires WPBakery Page Builder to be installed and active",
+      "published": "2026-02-20T03:16:01.960",
+      "cvss": 6.4,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2384"
     },
     {
-      "id": "CVE-2026-27016",
-      "summary": "LibreNMS is an auto-discovering PHP/MySQL/SNMP based network monitoring tool. Versions 24.10.0 through 26.1.1 are vulnerable to Stored XSS via the unit parameter in Custom OID. The Custom OID functionality lacks strip_tags() sanitization while other fields (name, oid, datatype) are sanitized. The unsanitized value is stored in the database and rendered without HTML escaping. This issue is fixed in version 26.2.0.",
-      "published": "2026-02-20T02:16:55.140",
-      "cvss": 5.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27016"
-    },
-    {
-      "id": "CVE-2026-26990",
-      "summary": "LibreNMS is an auto-discovering PHP/MySQL/SNMP based network monitoring tool. Versions 25.12.0 and below have a Time-Based Blind SQL Injection vulnerability in address-search.inc.php via the address parameter. When a crafted subnet prefix is supplied, the prefix value is concatenated directly into an SQL query without proper parameter binding, allowing an attacker to manipulate query logic and infer database information through time-based conditional responses. This vulnerability requires authentication and is exploitable by any authenticated user. This issue has been fixedd in version 26.2.0.",
-      "published": "2026-02-20T02:16:54.870",
-      "cvss": 8.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26990"
-    },
-    {
-      "id": "CVE-2026-26989",
-      "summary": "LibreNMS is an auto-discovering PHP/MySQL/SNMP based network monitoring tool. Versions 25.12.0 and below are affected by a Stored Cross-Site Scripting (XSS) vulnerability in the Alert Rules workflow. An attacker with administrative privileges can inject malicious scripts that execute in the browser context of any user who accesses the Alert Rules page. This issue has been fixed in version 26.2.0.",
-      "published": "2026-02-20T02:16:54.710",
-      "cvss": 4.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26989"
-    },
-    {
-      "id": "CVE-2026-26988",
-      "summary": "LibreNMS is an auto-discovering PHP/MySQL/SNMP based network monitoring tool. Versions 25.12.0 and below contain an SQL Injection vulnerability in the ajax_table.php endpoint. The application fails to properly sanitize or parameterize user input when processing IPv6 address searches. Specifically, the address parameter is split into an address and a prefix, and the prefix portion is directly concatenated into the SQL query string without validation. This allows an attacker to inject arbitrary SQL commands, potentially leading to unauthorized data access or database manipulation. This issue has been fixed in version 26.2.0.",
-      "published": "2026-02-20T02:16:54.550",
+      "id": "CVE-2026-27017",
+      "summary": "uTLS is a fork of crypto/tls, created to customize ClientHello for fingerprinting resistance while still using it for the handshake. Versions 1.6.0 through 1.8.0 contain a fingerprint mismatch with Chrome when using GREASE ECH, related to cipher suite selection. When Chrome selects the preferred cipher suite in the outer ClientHello and for ECH, it does so consistently based on hardware support\u2014for example, if it prefers AES for the outer cipher suite, it also uses AES for ECH. However, the Chrome parrot in uTLS hardcodes AES preference for outer cipher suites but selects the ECH cipher suite randomly between AES and ChaCha20. This creates a 50% chance of selecting ChaCha20 for ECH while using AES for the outer cipher suite, a combination impossible in Chrome. This issue only affects GREASE ECH; in real ECH, Chrome selects the first valid cipher suite when AES is preferred, which uTLS handles correctly. This issue has been fixed in version 1.8.1.",
+      "published": "2026-02-20T03:16:01.797",
       "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26988"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27017"
+    },
+    {
+      "id": "CVE-2026-26996",
+      "summary": "minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Versions 10.2.0 and below are vulnerable to Regular Expression Denial of Service (ReDoS) when a glob pattern contains many consecutive * wildcards followed by a literal character that doesn't appear in the test string. Each * compiles to a separate [^/]*? regex group, and when the match fails, V8's regex engine backtracks exponentially across all possible splits. The time complexity is O(4^N) where N is the number of * characters. With N=15, a single minimatch() call takes ~2 seconds. With N=34, it hangs effectively forever. Any application that passes user-controlled strings to minimatch() as the pattern argument is vulnerable to DoS. This issue has been fixed in version 10.2.1.",
+      "published": "2026-02-20T03:16:01.620",
+      "cvss": null,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26996"
+    },
+    {
+      "id": "CVE-2026-26994",
+      "summary": "uTLS is a fork of crypto/tls, created to customize ClientHello for fingerprinting resistance while still using it for the handshake. In versions 1.6.7 and below, uTLS did not implement the TLS 1.3 downgrade protection mechanism specified in RFC 8446 Section 4.1.3 when using a uTLS ClientHello spec. This allowed an active network adversary to downgrade TLS 1.3 connections initiated by a uTLS client to a lower TLS version (e.g., TLS 1.2) by modifying the ClientHello message to exclude the SupportedVersions extension, causing the server to respond with a TLS 1.2 ServerHello (along with a downgrade canary in the ServerHello random field). Because uTLS did not check the downgrade canary in the ServerHello random field, clients would accept the downgraded connection without detecting the attack. This attack could also be used by an active network attacker to fingerprint uTLS connections. This issue has been fixed in version 1.7.0.",
+      "published": "2026-02-20T03:16:01.330",
+      "cvss": 6.5,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26994"
+    },
+    {
+      "id": "CVE-2026-26993",
+      "summary": "Flare is a Next.js-based, self-hostable file sharing platform that integrates with screenshot tools. Versions 1.7.0 and below allow users to upload files without proper content validation or sanitization. By embedding malicious JavaScript within an SVG (or other active content formats such as HTML or XML), an attacker can achieve script execution in the context of the application's origin when a victim views the file in \u201craw\u201d mode. This results in a stored Cross-Site Scripting (XSS) vulnerability that can be exploited to exfiltrate user data. This issue has been fixed in version 1.7.1.",
+      "published": "2026-02-20T03:16:01.153",
+      "cvss": 4.6,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26993"
     }
   ]
 }
