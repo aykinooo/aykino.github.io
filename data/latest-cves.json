@@ -1,7 +1,14 @@
 {
-  "generated_at": "2026-02-20T06:07:58+00:00",
+  "generated_at": "2026-02-20T07:13:41+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2824",
+      "summary": "A flaw has been found in Comfast CF-E7 2.6.0.9. This affects the function sub_441CF4 of the file /cgi-bin/mbox-config?method=SET&section=ping_config of the component webmggnt. Executing a manipulation of the argument destination can lead to command injection. The attack may be performed from remote. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-02-20T06:17:01.387",
+      "cvss": 6.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2824"
+    },
     {
       "id": "CVE-2026-2823",
       "summary": "A vulnerability was detected in Comfast CF-E7 2.6.0.9. The impacted element is the function sub_41ACCC of the file /cgi-bin/mbox-config?method=SET&section=ntp_timezone of the component webmggnt. Performing a manipulation of the argument timestr results in command injection. The attack is possible to be carried out remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
@@ -36,13 +43,6 @@
       "published": "2026-02-20T03:16:01.960",
       "cvss": 6.4,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2384"
-    },
-    {
-      "id": "CVE-2026-27017",
-      "summary": "uTLS is a fork of crypto/tls, created to customize ClientHello for fingerprinting resistance while still using it for the handshake. Versions 1.6.0 through 1.8.0 contain a fingerprint mismatch with Chrome when using GREASE ECH, related to cipher suite selection. When Chrome selects the preferred cipher suite in the outer ClientHello and for ECH, it does so consistently based on hardware support\u2014for example, if it prefers AES for the outer cipher suite, it also uses AES for ECH. However, the Chrome parrot in uTLS hardcodes AES preference for outer cipher suites but selects the ECH cipher suite randomly between AES and ChaCha20. This creates a 50% chance of selecting ChaCha20 for ECH while using AES for the outer cipher suite, a combination impossible in Chrome. This issue only affects GREASE ECH; in real ECH, Chrome selects the first valid cipher suite when AES is preferred, which uTLS handles correctly. This issue has been fixed in version 1.8.1.",
-      "published": "2026-02-20T03:16:01.797",
-      "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27017"
     }
   ]
 }
