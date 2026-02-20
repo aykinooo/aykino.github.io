@@ -1,7 +1,14 @@
 {
-  "generated_at": "2026-02-20T07:13:41+00:00",
+  "generated_at": "2026-02-20T07:56:51+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2825",
+      "summary": "A vulnerability has been found in rachelos WeRSS we-mp-rss up to 1.4.8. This impacts the function fix_html of the file tools/fix.py of the component Article Module. The manipulation leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.",
+      "published": "2026-02-20T07:16:42.470",
+      "cvss": 3.5,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2825"
+    },
     {
       "id": "CVE-2026-2824",
       "summary": "A flaw has been found in Comfast CF-E7 2.6.0.9. This affects the function sub_441CF4 of the file /cgi-bin/mbox-config?method=SET&section=ping_config of the component webmggnt. Executing a manipulation of the argument destination can lead to command injection. The attack may be performed from remote. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
@@ -36,13 +43,6 @@
       "published": "2026-02-20T03:16:02.137",
       "cvss": 7.3,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2821"
-    },
-    {
-      "id": "CVE-2026-2384",
-      "summary": "The Quiz Maker plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's `vc_quizmaker` shortcode in all versions up to, and including, 6.7.1.7 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.\r\nNote: This vulnerability requires WPBakery Page Builder to be installed and active",
-      "published": "2026-02-20T03:16:01.960",
-      "cvss": 6.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2384"
     }
   ]
 }
