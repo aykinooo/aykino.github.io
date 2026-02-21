@@ -1,7 +1,21 @@
 {
-  "generated_at": "2026-02-21T15:37:59+00:00",
+  "generated_at": "2026-02-21T16:46:46+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2872",
+      "summary": "A security vulnerability has been detected in Tenda A21 1.0.0.0. This vulnerability affects the function set_device_name of the file /goform/setBlackRule of the component MAC Filtering Configuration Endpoint. Such manipulation of the argument devName/mac leads to stack-based buffer overflow. The attack may be performed from remote. The exploit has been disclosed publicly and may be used.",
+      "published": "2026-02-21T16:16:05.390",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2872"
+    },
+    {
+      "id": "CVE-2026-2871",
+      "summary": "A weakness has been identified in Tenda A21 1.0.0.0. This affects the function fromSetIpMacBind of the file /goform/SetIpMacBind. This manipulation of the argument list causes stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks.",
+      "published": "2026-02-21T16:16:05.133",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2871"
+    },
     {
       "id": "CVE-2026-2870",
       "summary": "A security flaw has been discovered in Tenda A21 1.0.0.0. Affected by this issue is the function set_qosMib_list of the file /goform/formSetQosBand. The manipulation of the argument list results in stack-based buffer overflow. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks.",
@@ -29,20 +43,6 @@
       "published": "2026-02-21T11:15:57.600",
       "cvss": 7.4,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27579"
-    },
-    {
-      "id": "CVE-2026-27574",
-      "summary": "OneUptime is a solution for monitoring and managing online services. In versions 9.5.13 and below, custom JavaScript monitor feature uses Node.js's node:vm module (explicitly documented as not a security mechanism) to execute user-supplied code, allowing trivial sandbox escape via a well-known one-liner that grants full access to the underlying process. Because the probe runs with host networking and holds all cluster credentials (ONEUPTIME_SECRET, DATABASE_PASSWORD, REDIS_PASSWORD, CLICKHOUSE_PASSWORD) in its environment variables, and monitor creation is available to the lowest role (ProjectMember) with open registration enabled by default, any anonymous user can achieve full cluster compromise in about 30 seconds. This issue has been fixed in version 10.0.5.",
-      "published": "2026-02-21T11:15:57.443",
-      "cvss": 9.9,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27574"
-    },
-    {
-      "id": "CVE-2026-27492",
-      "summary": "Lettermint Node.js SDK is the official Node.js SDK for Lettermint. In versions 1.5.0 and below, email properties (such as to, subject, html, text, and attachments) are not reset between sends when a single client instance is reused across multiple .send() calls. This can cause properties from a previous send to leak into a subsequent one, potentially delivering content or recipient addresses to unintended parties. Applications sending emails to different recipients in sequence \u2014 such as transactional flows like password resets or notifications \u2014 are affected. This issue has been fixed in version 1.5.1.",
-      "published": "2026-02-21T11:15:57.287",
-      "cvss": 4.7,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27492"
     }
   ]
 }
