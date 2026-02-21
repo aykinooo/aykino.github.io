@@ -1,7 +1,21 @@
 {
-  "generated_at": "2026-02-21T17:40:08+00:00",
+  "generated_at": "2026-02-21T18:53:19+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2876",
+      "summary": "A vulnerability was determined in Tenda A18 15.13.07.13. This affects the function parse_macfilter_rule of the file /goform/setBlackRule. This manipulation of the argument deviceList causes stack-based buffer overflow. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized.",
+      "published": "2026-02-21T18:16:00.933",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2876"
+    },
+    {
+      "id": "CVE-2026-2874",
+      "summary": "A flaw has been found in Tenda A21 1.0.0.0. Impacted is the function form_fast_setting_wifi_set of the file /goform/fast_setting_wifi_set. Executing a manipulation of the argument ssid can lead to stack-based buffer overflow. It is possible to launch the attack remotely. The exploit has been published and may be used.",
+      "published": "2026-02-21T18:15:59.770",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2874"
+    },
     {
       "id": "CVE-2026-2873",
       "summary": "A vulnerability was detected in Tenda A21 1.0.0.0. This issue affects the function setSchedWifi of the file /goform/openSchedWifi. Performing a manipulation of the argument schedStartTime/schedEndTime results in stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit is now public and may be used.",
@@ -29,20 +43,6 @@
       "published": "2026-02-21T15:15:59.643",
       "cvss": 8.8,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2870"
-    },
-    {
-      "id": "CVE-2026-2869",
-      "summary": "A vulnerability was identified in janet-lang janet up to 1.40.1. Affected by this vulnerability is the function janetc_varset of the file src/core/specials.c of the component handleattr Handler. The manipulation leads to out-of-bounds read. The attack can only be performed from a local environment. The exploit is publicly available and might be used. Upgrading to version 1.41.0 addresses this issue. The identifier of the patch is 2fabc80151a2b8834ee59cda8a70453f848b40e5. The affected component should be upgraded.",
-      "published": "2026-02-21T15:15:58.607",
-      "cvss": 3.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2869"
-    },
-    {
-      "id": "CVE-2026-2867",
-      "summary": "A vulnerability was determined in itsourcecode Vehicle Management System 1.0. Affected is an unknown function of the file /billaction.php. Executing a manipulation of the argument ID can lead to sql injection. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized.",
-      "published": "2026-02-21T14:15:57.983",
-      "cvss": 7.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2867"
     }
   ]
 }
