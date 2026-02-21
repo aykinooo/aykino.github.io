@@ -1,7 +1,28 @@
 {
-  "generated_at": "2026-02-21T19:35:19+00:00",
+  "generated_at": "2026-02-21T20:38:24+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2883",
+      "summary": "A vulnerability was determined in D-Link DWR-M960 1.01.07. Impacted is the function sub_427D74 of the file /boafrm/formIpQoS. Executing a manipulation of the argument submit-url can lead to stack-based buffer overflow. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized.",
+      "published": "2026-02-21T20:16:40.310",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2883"
+    },
+    {
+      "id": "CVE-2026-2882",
+      "summary": "A vulnerability was found in D-Link DWR-M960 1.01.07. This issue affects the function sub_46385C of the file /boafrm/formDosCfg. Performing a manipulation of the argument submit-url results in stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been made public and could be used.",
+      "published": "2026-02-21T20:16:40.103",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2882"
+    },
+    {
+      "id": "CVE-2026-2881",
+      "summary": "A vulnerability has been found in D-Link DWR-M960 1.01.07. This vulnerability affects the function sub_425FF8 of the file /boafrm/formFirewallAdv of the component Advanced Firewall Configuration Endpoint. Such manipulation of the argument submit-url leads to stack-based buffer overflow. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.",
+      "published": "2026-02-21T20:16:39.067",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2881"
+    },
     {
       "id": "CVE-2026-2877",
       "summary": "A vulnerability has been found in Tenda A18 15.13.07.13. This affects the function strcpy of the file /goform/WifiExtraSet of the component Httpd Service. The manipulation of the argument wpapsk_crypto5g leads to stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.",
@@ -22,27 +43,6 @@
       "published": "2026-02-21T18:15:59.770",
       "cvss": 8.8,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2874"
-    },
-    {
-      "id": "CVE-2026-2873",
-      "summary": "A vulnerability was detected in Tenda A21 1.0.0.0. This issue affects the function setSchedWifi of the file /goform/openSchedWifi. Performing a manipulation of the argument schedStartTime/schedEndTime results in stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit is now public and may be used.",
-      "published": "2026-02-21T17:15:58.987",
-      "cvss": 8.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2873"
-    },
-    {
-      "id": "CVE-2026-2872",
-      "summary": "A security vulnerability has been detected in Tenda A21 1.0.0.0. This vulnerability affects the function set_device_name of the file /goform/setBlackRule of the component MAC Filtering Configuration Endpoint. Such manipulation of the argument devName/mac leads to stack-based buffer overflow. The attack may be performed from remote. The exploit has been disclosed publicly and may be used.",
-      "published": "2026-02-21T16:16:05.390",
-      "cvss": 8.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2872"
-    },
-    {
-      "id": "CVE-2026-2871",
-      "summary": "A weakness has been identified in Tenda A21 1.0.0.0. This affects the function fromSetIpMacBind of the file /goform/SetIpMacBind. This manipulation of the argument list causes stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks.",
-      "published": "2026-02-21T16:16:05.133",
-      "cvss": 8.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2871"
     }
   ]
 }
