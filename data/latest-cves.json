@@ -1,7 +1,14 @@
 {
-  "generated_at": "2026-02-21T16:46:46+00:00",
+  "generated_at": "2026-02-21T17:40:08+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2873",
+      "summary": "A vulnerability was detected in Tenda A21 1.0.0.0. This issue affects the function setSchedWifi of the file /goform/openSchedWifi. Performing a manipulation of the argument schedStartTime/schedEndTime results in stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit is now public and may be used.",
+      "published": "2026-02-21T17:15:58.987",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2873"
+    },
     {
       "id": "CVE-2026-2872",
       "summary": "A security vulnerability has been detected in Tenda A21 1.0.0.0. This vulnerability affects the function set_device_name of the file /goform/setBlackRule of the component MAC Filtering Configuration Endpoint. Such manipulation of the argument devName/mac leads to stack-based buffer overflow. The attack may be performed from remote. The exploit has been disclosed publicly and may be used.",
@@ -36,13 +43,6 @@
       "published": "2026-02-21T14:15:57.983",
       "cvss": 7.3,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2867"
-    },
-    {
-      "id": "CVE-2026-27579",
-      "summary": "CollabPlatform is a full-stack, real-time doc collaboration platform. In all versions of CollabPlatform, the Appwrite project used by the application is misconfigured to allow arbitrary origins in CORS responses while also permitting credentialed requests. An attacker-controlled domain can issue authenticated cross-origin requests and read sensitive user account information, including email address, account identifiers, and MFA status. The issue did not have a fix at the time of publication.",
-      "published": "2026-02-21T11:15:57.600",
-      "cvss": 7.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27579"
     }
   ]
 }
