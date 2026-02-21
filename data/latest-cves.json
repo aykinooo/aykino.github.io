@@ -1,7 +1,14 @@
 {
-  "generated_at": "2026-02-21T13:51:36+00:00",
+  "generated_at": "2026-02-21T14:42:56+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2867",
+      "summary": "A vulnerability was determined in itsourcecode Vehicle Management System 1.0. Affected is an unknown function of the file /billaction.php. Executing a manipulation of the argument ID can lead to sql injection. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized.",
+      "published": "2026-02-21T14:15:57.983",
+      "cvss": 7.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2867"
+    },
     {
       "id": "CVE-2026-27579",
       "summary": "CollabPlatform is a full-stack, real-time doc collaboration platform. In all versions of CollabPlatform, the Appwrite project used by the application is misconfigured to allow arbitrary origins in CORS responses while also permitting credentialed requests. An attacker-controlled domain can issue authenticated cross-origin requests and read sensitive user account information, including email address, account identifiers, and MFA status. The issue did not have a fix at the time of publication.",
@@ -36,13 +43,6 @@
       "published": "2026-02-21T10:16:13.437",
       "cvss": null,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27576"
-    },
-    {
-      "id": "CVE-2026-27488",
-      "summary": "OpenClaw is a personal AI assistant. In versions 2026.2.17 and below, Cron webhook delivery in src/gateway/server-cron.ts uses fetch() directly, so webhook targets can reach private/metadata/internal endpoints without SSRF policy checks. This issue was fixed in version 2026.2.19.",
-      "published": "2026-02-21T10:16:13.267",
-      "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27488"
     }
   ]
 }
