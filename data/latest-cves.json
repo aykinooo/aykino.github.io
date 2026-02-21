@@ -1,7 +1,21 @@
 {
-  "generated_at": "2026-02-21T14:42:56+00:00",
+  "generated_at": "2026-02-21T15:37:59+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2870",
+      "summary": "A security flaw has been discovered in Tenda A21 1.0.0.0. Affected by this issue is the function set_qosMib_list of the file /goform/formSetQosBand. The manipulation of the argument list results in stack-based buffer overflow. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks.",
+      "published": "2026-02-21T15:15:59.643",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2870"
+    },
+    {
+      "id": "CVE-2026-2869",
+      "summary": "A vulnerability was identified in janet-lang janet up to 1.40.1. Affected by this vulnerability is the function janetc_varset of the file src/core/specials.c of the component handleattr Handler. The manipulation leads to out-of-bounds read. The attack can only be performed from a local environment. The exploit is publicly available and might be used. Upgrading to version 1.41.0 addresses this issue. The identifier of the patch is 2fabc80151a2b8834ee59cda8a70453f848b40e5. The affected component should be upgraded.",
+      "published": "2026-02-21T15:15:58.607",
+      "cvss": 3.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2869"
+    },
     {
       "id": "CVE-2026-2867",
       "summary": "A vulnerability was determined in itsourcecode Vehicle Management System 1.0. Affected is an unknown function of the file /billaction.php. Executing a manipulation of the argument ID can lead to sql injection. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized.",
@@ -29,20 +43,6 @@
       "published": "2026-02-21T11:15:57.287",
       "cvss": 4.7,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27492"
-    },
-    {
-      "id": "CVE-2026-1787",
-      "summary": "The LearnPress Export Import \u2013 WordPress extension for LearnPress plugin for WordPress is vulnerable to unauthorized loss of data due to a missing capability check on the 'delete_migrated_data' function in all versions up to, and including, 4.1.0. This makes it possible for unauthenticated attackers to delete course that have been migrated from Tutor LMS. The Tutor LMS plugin must be installed and activated in order to exploit the vulnerability.",
-      "published": "2026-02-21T11:15:55.813",
-      "cvss": 4.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1787"
-    },
-    {
-      "id": "CVE-2026-27576",
-      "summary": "OpenClaw is a personal AI assistant. In versions 2026.2.17 and below, the ACP bridge accepts very large prompt text blocks and can assemble oversized prompt payloads before forwarding them to chat.send. Because ACP runs over local stdio, this mainly affects local ACP clients (for example IDE integrations) that send unusually large inputs. This issue has been fixed in version 2026.2.19.",
-      "published": "2026-02-21T10:16:13.437",
-      "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27576"
     }
   ]
 }
