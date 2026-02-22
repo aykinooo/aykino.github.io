@@ -1,7 +1,35 @@
 {
-  "generated_at": "2026-02-22T08:48:37+00:00",
+  "generated_at": "2026-02-22T09:45:18+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2938",
+      "summary": "A vulnerability has been found in SourceCodester Student Result Management System 1.0. The affected element is an unknown function of the file /srms/script/admin/core/update_smtp.php. The manipulation leads to improper access controls. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.",
+      "published": "2026-02-22T09:16:11.630",
+      "cvss": 7.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2938"
+    },
+    {
+      "id": "CVE-2026-2935",
+      "summary": "A weakness has been identified in UTT HiPER 810G up to 1.7.7-171114. This issue affects the function strcpy of the file /goform/ConfigExceptMSN. Executing a manipulation of the argument remark can lead to buffer overflow. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
+      "published": "2026-02-22T09:16:11.403",
+      "cvss": 7.2,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2935"
+    },
+    {
+      "id": "CVE-2026-2934",
+      "summary": "A security vulnerability has been detected in YiFang CMS up to 2.0.5. This impacts the function update of the file app/db/admin/D_friendLinkGroup.php of the component Extended Management Module. The manipulation of the argument Name leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used.",
+      "published": "2026-02-22T09:16:11.173",
+      "cvss": 2.4,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2934"
+    },
+    {
+      "id": "CVE-2026-2385",
+      "summary": "The The Plus Addons for Elementor \u2013 Addons for Elementor, Page Templates, Widgets, Mega Menu, WooCommerce plugin for WordPress is vulnerable to Insufficient Verification of Data Authenticity in all versions up to, and including, 6.4.7. This is due to the plugin decrypting and trusting attacker-controlled email_data in an unauthenticated AJAX handler without cryptographic authenticity guarantees. This makes it possible for unauthenticated attackers to tamper with form email routing and redirection values to trigger unauthorized email relay and attacker-controlled redirection via the 'email_data' parameter.",
+      "published": "2026-02-22T09:16:10.107",
+      "cvss": 5.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2385"
+    },
     {
       "id": "CVE-2026-2933",
       "summary": "A weakness has been identified in YiFang CMS up to 2.0.5. This affects the function update of the file app/db/admin/D_adManage.php of the component Extended Management Module. Executing a manipulation of the argument Name can lead to cross site scripting. The attack may be performed from remote. The exploit has been made available to the public and could be used for attacks.",
@@ -15,34 +43,6 @@
       "published": "2026-02-22T08:15:55.770",
       "cvss": 2.4,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2932"
-    },
-    {
-      "id": "CVE-2026-2930",
-      "summary": "A vulnerability was identified in Tenda A18 15.13.07.13. The affected element is the function webCgiGetUploadFile of the file /cgi-bin/UploadCfg of the component Httpd Service. Such manipulation of the argument boundary leads to stack-based buffer overflow. The attack can be executed remotely. The exploit is publicly available and might be used.",
-      "published": "2026-02-22T07:16:15.023",
-      "cvss": 6.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2930"
-    },
-    {
-      "id": "CVE-2026-2929",
-      "summary": "A vulnerability was determined in D-Link DWR-M960 1.01.07. Impacted is the function sub_453140 of the file /boafrm/formWlAc of the component Wireless Access Control Endpoint. This manipulation of the argument submit-url causes stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized.",
-      "published": "2026-02-22T06:16:03.873",
-      "cvss": 8.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2929"
-    },
-    {
-      "id": "CVE-2026-1369",
-      "summary": "The Conditional CAPTCHA WordPress plugin through 4.0.0 does not validate a parameter before redirecting the user to its value, leading to an Open Redirect issue",
-      "published": "2026-02-22T06:16:02.537",
-      "cvss": null,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1369"
-    },
-    {
-      "id": "CVE-2026-2928",
-      "summary": "A vulnerability was found in D-Link DWR-M960 1.01.07. This issue affects the function sub_452CCC of the file /boafrm/formWlEncrypt of the component WLAN Encryption Configuration Endpoint. The manipulation of the argument submit-url results in stack-based buffer overflow. The attack may be launched remotely. The exploit has been made public and could be used.",
-      "published": "2026-02-22T05:16:19.303",
-      "cvss": 8.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2928"
     }
   ]
 }
