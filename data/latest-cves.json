@@ -1,48 +1,48 @@
 {
-  "generated_at": "2026-02-22T14:43:39+00:00",
+  "generated_at": "2026-02-22T15:39:09+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
     {
-      "id": "CVE-2026-2953",
-      "summary": "A vulnerability has been found in Dromara UJCMS 101.2. This issue affects the function deleteDirectory of the file WebFileTemplateController.delete of the component Template Handler. Such manipulation leads to path traversal. The attack may be performed from remote. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-02-22T14:16:02.890",
-      "cvss": 5.4,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2953"
+      "id": "CVE-2026-2954",
+      "summary": "A vulnerability was found in Dromara UJCMS 10.0.2. Impacted is the function importChanel of the file /api/backend/ext/import-data/import-channel of the component ImportDataController. Performing a manipulation of the argument driverClassName/url results in injection. It is possible to initiate the attack remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-02-22T15:16:16.610",
+      "cvss": 6.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2954"
     },
     {
-      "id": "CVE-2026-2952",
-      "summary": "A flaw has been found in Vaelsys 4.1.0. This vulnerability affects unknown code of the file /tree/tree_server.php of the component HTTP POST Request Handler. This manipulation of the argument xajaxargs causes os command injection. The attack is possible to be carried out remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-02-22T14:16:02.687",
-      "cvss": 7.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2952"
-    },
-    {
-      "id": "CVE-2026-2947",
-      "summary": "A vulnerability was detected in rymcu forest up to 0.0.5. This affects the function updateUserInfo of the file - src/main/java/com/rymcu/forest/web/api/user/UserInfoController.java of the component User Profile Handler. The manipulation results in cross site scripting. The attack can be executed remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-02-22T14:16:02.470",
-      "cvss": 3.5,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2947"
-    },
-    {
-      "id": "CVE-2019-25452",
-      "summary": "Dolibarr ERP/CRM 10.0.1 contains an SQL injection vulnerability in the elemid POST parameter of the viewcat.php endpoint that allows unauthenticated attackers to execute arbitrary SQL queries. Attackers can submit crafted POST requests with malicious SQL payloads in the elemid parameter to extract sensitive database information using error-based or time-based blind SQL injection techniques.",
-      "published": "2026-02-22T14:16:02.180",
+      "id": "CVE-2019-25462",
+      "summary": "Web Ofisi Rent a Car v3 contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the 'klima' parameter. Attackers can send GET requests to with malicious 'klima' values to extract sensitive database information or cause denial of service.",
+      "published": "2026-02-22T15:16:16.327",
       "cvss": 8.2,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25452"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25462"
     },
     {
-      "id": "CVE-2019-25450",
-      "summary": "Dolibarr ERP/CRM 10.0.1 contains multiple SQL injection vulnerabilities that allow authenticated attackers to manipulate database queries by injecting SQL code through POST parameters. Attackers can inject malicious SQL through parameters like actioncode, demand_reason_id, and availability_id in card.php endpoints to extract sensitive database information using boolean-based blind, error-based, and time-based blind techniques.",
-      "published": "2026-02-22T14:16:01.990",
-      "cvss": 7.1,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25450"
-    },
-    {
-      "id": "CVE-2019-25446",
-      "summary": "DIGIT CENTRIS ERP contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the datum1, datum2, KID, and PID parameters. Attackers can send POST requests to /korisnikinfo.php with malicious SQL syntax in these parameters to extract or modify sensitive database information.",
-      "published": "2026-02-22T14:16:01.790",
+      "id": "CVE-2019-25461",
+      "summary": "Web Ofisi Platinum E-Ticaret v5 contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the 'q' parameter. Attackers can send POST requests to the ajax/productsFilterSearch endpoint with malicious 'q' values using time-based blind SQL injection techniques to extract sensitive database information.",
+      "published": "2026-02-22T15:16:16.143",
       "cvss": 8.2,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25446"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25461"
+    },
+    {
+      "id": "CVE-2019-25460",
+      "summary": "Web Ofisi Platinum E-Ticaret v5 contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the 'q' GET parameter. Attackers can send requests to the arama endpoint with malicious 'q' values using time-based SQL injection techniques to extract sensitive database information.",
+      "published": "2026-02-22T15:16:15.947",
+      "cvss": 8.2,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25460"
+    },
+    {
+      "id": "CVE-2019-25459",
+      "summary": "Web Ofisi Emlak V2 contains multiple SQL injection vulnerabilities in the endpoint that allow unauthenticated attackers to manipulate database queries through GET parameters. Attackers can inject SQL code into parameters like emlak_durumu, emlak_tipi, il, ilce, kelime, and semt to extract sensitive database information or perform time-based blind SQL injection attacks.",
+      "published": "2026-02-22T15:16:15.757",
+      "cvss": 8.2,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25459"
+    },
+    {
+      "id": "CVE-2019-25458",
+      "summary": "Web Ofisi Firma Rehberi v1 contains an SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through GET parameters. Attackers can send requests to with malicious payloads in the 'il', 'kat', or 'kelime' parameters to extract sensitive database information or perform time-based blind SQL injection attacks.",
+      "published": "2026-02-22T15:16:15.570",
+      "cvss": 8.2,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25458"
     }
   ]
 }
