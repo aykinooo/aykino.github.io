@@ -1,48 +1,48 @@
 {
-  "generated_at": "2026-02-21T23:36:17+00:00",
+  "generated_at": "2026-02-22T03:15:16+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
     {
-      "id": "CVE-2026-2895",
-      "summary": "A security flaw has been discovered in funadmin up to 7.1.0-rc4. Affected by this issue is the function repass of the file app/frontend/controller/Member.php. Performing a manipulation of the argument forget_code/vercode results in weak password recovery. Remote exploitation of the attack is possible. The attack's complexity is rated as high. The exploitation is known to be difficult. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-02-21T23:15:59.990",
-      "cvss": 3.7,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2895"
-    },
-    {
-      "id": "CVE-2026-2894",
-      "summary": "A vulnerability was identified in funadmin up to 7.1.0-rc4. Affected by this vulnerability is the function getMember of the file app/frontend/view/login/forget.html. Such manipulation leads to information disclosure. The attack may be launched remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-      "published": "2026-02-21T23:15:59.763",
-      "cvss": 5.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2894"
-    },
-    {
-      "id": "CVE-2026-2889",
-      "summary": "A vulnerability was detected in CCExtractor up to 0.96.5. Affected is the function processmp4 in the library src/lib_ccx/mp4.c. Performing a manipulation results in use after free. The attack is only possible with local access. The exploit is now public and may be used. Upgrading to version 0.96.6 is able to address this issue. The patch is named fd7271bae238ccb3ae8a71304ea64f0886324925. You should upgrade the affected component.",
-      "published": "2026-02-21T22:15:59.353",
-      "cvss": 3.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2889"
-    },
-    {
-      "id": "CVE-2026-2887",
-      "summary": "A security vulnerability has been detected in aardappel lobster up to 2025.4. This impacts the function lobster::TypeName in the library dev/src/lobster/idents.h. Such manipulation leads to uncontrolled recursion. The attack can only be performed from a local environment. The exploit has been disclosed publicly and may be used. Upgrading to version 2026.1 will fix this issue. The name of the patch is 8ba49f98ccfc9734ef352146806433a41d9f9aa6. It is advisable to upgrade the affected component.",
-      "published": "2026-02-21T21:16:11.420",
-      "cvss": 3.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2887"
-    },
-    {
-      "id": "CVE-2026-2886",
-      "summary": "A weakness has been identified in Tenda A21 1.0.0.0. This affects the function set_device_name of the file /goform/SetOnlineDevName. This manipulation of the argument devName causes stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been made available to the public and could be used for attacks.",
-      "published": "2026-02-21T21:16:11.217",
+      "id": "CVE-2026-2909",
+      "summary": "A vulnerability was detected in Tenda HG9 300001138. This affects an unknown part of the file /boaform/formPing of the component Diagnostic Ping Endpoint. Performing a manipulation of the argument pingAddr results in stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit is now public and may be used.",
+      "published": "2026-02-22T02:16:58.100",
       "cvss": 8.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2886"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2909"
     },
     {
-      "id": "CVE-2026-2885",
-      "summary": "A security flaw has been discovered in D-Link DWR-M960 1.01.07. The impacted element is the function sub_469104 of the file /boafrm/formIpv6Setup. The manipulation of the argument submit-url results in stack-based buffer overflow. The attack may be performed from remote. The exploit has been released to the public and may be used for attacks.",
-      "published": "2026-02-21T21:16:10.907",
+      "id": "CVE-2026-2908",
+      "summary": "A security vulnerability has been detected in Tenda HG9 300001138. Affected by this issue is some unknown functionality of the file /boaform/formLoopBack of the component Loopback Detection Configuration Endpoint. Such manipulation of the argument Ethtype leads to stack-based buffer overflow. The attack can be executed remotely. The exploit has been disclosed publicly and may be used.",
+      "published": "2026-02-22T02:16:57.890",
       "cvss": 8.8,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2885"
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2908"
+    },
+    {
+      "id": "CVE-2026-2907",
+      "summary": "A weakness has been identified in Tenda HG9 300001138. Affected by this vulnerability is an unknown functionality of the file /boaform/formgponConf of the component GPON Configuration Endpoint. This manipulation of the argument fmgpon_loid/fmgpon_loid_password causes stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks.",
+      "published": "2026-02-22T02:16:57.703",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2907"
+    },
+    {
+      "id": "CVE-2026-2906",
+      "summary": "A security flaw has been discovered in Tenda HG9 300001138. Affected is an unknown function of the file /boaform/formSamba of the component Samba Configuration Endpoint. The manipulation of the argument sambaCap results in stack-based buffer overflow. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks.",
+      "published": "2026-02-22T02:16:57.493",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2906"
+    },
+    {
+      "id": "CVE-2026-2905",
+      "summary": "A vulnerability was identified in Tenda HG9 300001138. This impacts an unknown function of the file /boaform/formWlanSetup of the component Wireless Configuration Endpoint. The manipulation of the argument ssid leads to stack-based buffer overflow. The attack may be initiated remotely. The exploit is publicly available and might be used.",
+      "published": "2026-02-22T02:16:56.380",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2905"
+    },
+    {
+      "id": "CVE-2026-2904",
+      "summary": "A vulnerability was determined in UTT HiPER 810G 1.7.7-171114. This affects the function strcpy of the file /goform/ConfigExceptAli. Executing a manipulation can lead to buffer overflow. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.",
+      "published": "2026-02-22T01:16:00.797",
+      "cvss": 8.8,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2904"
     }
   ]
 }
