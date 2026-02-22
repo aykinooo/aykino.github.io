@@ -1,7 +1,21 @@
 {
-  "generated_at": "2026-02-22T13:12:05+00:00",
+  "generated_at": "2026-02-22T13:52:27+00:00",
   "source": "https://services.nvd.nist.gov/rest/json/cves/2.0",
   "items": [
+    {
+      "id": "CVE-2026-2946",
+      "summary": "A security vulnerability has been detected in rymcu forest up to 0.0.5. Affected by this issue is the function XssUtils.replaceHtmlCode of the file src/main/java/com/rymcu/forest/util/XssUtils.java of the component Article Content/Comments/Portfolio. The manipulation leads to cross site scripting. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-02-22T13:16:13.323",
+      "cvss": 3.5,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2946"
+    },
+    {
+      "id": "CVE-2026-2945",
+      "summary": "A weakness has been identified in JeecgBoot 3.9.0. Affected by this vulnerability is an unknown functionality of the file /sys/common/uploadImgByHttp. Executing a manipulation of the argument fileUrl can lead to server-side request forgery. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "published": "2026-02-22T13:16:12.267",
+      "cvss": 6.3,
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2945"
+    },
     {
       "id": "CVE-2026-2944",
       "summary": "A security flaw has been discovered in Tosei Online Store Management System \u30cd\u30c3\u30c8\u5e97\u8217\u7ba1\u7406\u30b7\u30b9\u30c6\u30e0 1.01. Affected is the function system of the file /cgi-bin/monitor.php of the component HTTP POST Request Handler. Performing a manipulation of the argument DevId results in os command injection. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
@@ -29,20 +43,6 @@
       "published": "2026-02-22T10:15:56.520",
       "cvss": 2.4,
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2939"
-    },
-    {
-      "id": "CVE-2026-2938",
-      "summary": "A vulnerability has been found in SourceCodester Student Result Management System 1.0. The affected element is an unknown function of the file /srms/script/admin/core/update_smtp.php. The manipulation leads to improper access controls. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.",
-      "published": "2026-02-22T09:16:11.630",
-      "cvss": 7.3,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2938"
-    },
-    {
-      "id": "CVE-2026-2935",
-      "summary": "A weakness has been identified in UTT HiPER 810G up to 1.7.7-171114. This issue affects the function strcpy of the file /goform/ConfigExceptMSN. Executing a manipulation of the argument remark can lead to buffer overflow. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.",
-      "published": "2026-02-22T09:16:11.403",
-      "cvss": 7.2,
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2935"
     }
   ]
 }
